@@ -8,6 +8,6 @@ public class Skill
     public int DisplayOrder { get; set; }
 
     public Category Category { get; set; } = null!;
-    public List<Project> Projects { get; set; }
-    public List<Experience> Experiences { get; set; }
+    public List<Project> Projects { get; set; } = [];
+    public List<Experience> Experiences { get; set; } = [];
 }
