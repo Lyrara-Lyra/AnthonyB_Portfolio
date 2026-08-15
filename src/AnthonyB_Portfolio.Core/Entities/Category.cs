@@ -1,0 +1,10 @@
+namespace AnthonyB_Portfolio.Core.Entities;
+
+public class Category
+{
+    public int Id { get; set; }
+    public required string Name { get; set; }
+    public int DisplayOrder { get; set; }
+
+    public List<Skill> Skills { get; set; } = [];
+}
