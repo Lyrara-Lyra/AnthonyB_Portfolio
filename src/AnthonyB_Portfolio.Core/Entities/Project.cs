@@ -9,4 +9,5 @@ public class Project
     public int DisplayOrder { get; set; }
 
     public List<Skill> Skills { get; set; } = [];
+    public List<ProjectDetail> Details { get; set; } = [];
 }

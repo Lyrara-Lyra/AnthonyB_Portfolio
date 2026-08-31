@@ -14,6 +14,7 @@ public class PortfolioDbContext : DbContext
     public DbSet<Experience> Experiences => Set<Experience>();
     public DbSet<Responsibility> Responsibilities => Set<Responsibility>();
     public DbSet<Project> Projects => Set<Project>();
+    public DbSet<ProjectDetail> ProjectDetails => Set<ProjectDetail>();
 
     // This is where we configure how our C# classes map to database tables
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -52,6 +53,13 @@ public class PortfolioDbContext : DbContext
             .HasForeignKey(r => r.ExperienceId)
             .OnDelete(DeleteBehavior.Cascade);  // Delete responsibilities with experience
 
+        // One-to-many: Project → ProjectDetails
+        modelBuilder.Entity<Project>()
+            .HasMany(p => p.Details)
+            .WithOne(d => d.Project)
+            .HasForeignKey(d => d.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         // String length validation
         modelBuilder.Entity<Category>()
             .Property(c => c.Name).HasMaxLength(50);
@@ -73,5 +81,8 @@ public class PortfolioDbContext : DbContext
             .Property(p => p.Title).HasMaxLength(120);
         modelBuilder.Entity<Project>()
             .Property(p => p.Url).HasMaxLength(500);
+
+        modelBuilder.Entity<ProjectDetail>()
+            .Property(d => d.Description).HasMaxLength(300);
     }
 }
