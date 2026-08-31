@@ -122,9 +122,9 @@ public static class SeedData
             Details = new List<ProjectDetail>
             {
                 new ProjectDetail { Description = "Développement d'un site bilingue complet en complément de chaine YouTube", DisplayOrder = 1 },
-                new ProjectDetail { Description = "Sauvegarde de plusieurs Pokédex en local, avec un module d'import/export et personnalisation de l'affichage", DisplayOrder = 1 },
-                new ProjectDetail { Description = "Intégration de guides interactifs pour la communauté", DisplayOrder = 2 },
-                new ProjectDetail { Description = "Gestion de bases de données complexes avec options supplémentaires", DisplayOrder = 3 },
+                new ProjectDetail { Description = "Sauvegarde de plusieurs Pokédex en local, avec un module d'import/export et personnalisation de l'affichage", DisplayOrder = 2 },
+                new ProjectDetail { Description = "Intégration de guides interactifs pour la communauté", DisplayOrder = 3 },
+                new ProjectDetail { Description = "Gestion de bases de données complexes avec options supplémentaires", DisplayOrder = 4 },
             }
         };
 
@@ -242,8 +242,7 @@ public static class SeedData
                 new Responsibility { Description = "Gestion de la sécurité et de l'accueil du public sur les attractions", DisplayOrder = 1 },
                 new Responsibility { Description = "Travail de cohésion d'équipe avec communication constante", DisplayOrder = 2 },
                 new Responsibility { Description = "Développement du relationnel client et adaptation à une forte affluence", DisplayOrder = 3 }
-            },
-            Skills = new List<Skill> { }
+            }
         };
 
         // Emploi: Mericq
@@ -298,8 +297,7 @@ public static class SeedData
                 new Responsibility { Description = "Réalisation de fiches guides pour les utilisateurs", DisplayOrder = 3 },
                 new Responsibility { Description = "Mise en place de nouveaux postes informatiques", DisplayOrder = 4 },
                 new Responsibility { Description = "Reconditionnement des postes usagés en fonction des besoins", DisplayOrder = 5 }
-            },
-            Skills = new List<Skill> { }
+            }
         };
 
         // Première année IFSI
@@ -320,8 +318,7 @@ public static class SeedData
                 new Responsibility { Description = "Développement du relationnel avec les patients (empathie, respect, non-jugement)", DisplayOrder = 4 },
                 new Responsibility { Description = "Travail d'équipe en milieu médical à forte pression", DisplayOrder = 5 },
                 new Responsibility { Description = "Acquisition des bases des soins et de l'accompagnement des patients", DisplayOrder = 6 }
-            },
-            Skills = new List<Skill> { }
+            }
         };
 
         // Formation: AJC Formation
