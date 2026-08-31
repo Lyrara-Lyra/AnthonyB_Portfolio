@@ -2,6 +2,12 @@ using AnthonyB_Portfolio.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add HttpClient for calling Api
+builder.Services.AddScoped(sp => new HttpClient
+{
+    BaseAddress = new Uri("http://localhost:5016")
+});
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();

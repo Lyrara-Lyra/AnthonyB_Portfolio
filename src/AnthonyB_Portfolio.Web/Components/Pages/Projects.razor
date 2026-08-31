@@ -1,0 +1,60 @@
+@using AnthonyB_Portfolio.Core.Entities
+@inject HttpClient Http
+
+<article class="projects-section">
+    <h2>Projets</h2>
+
+    @if (projects != null && projects.Any())
+    {
+        @foreach (var project in projects)
+        {
+            <article class="project-card">
+                <header>
+                    <h3>@project.Title</h3>
+                </header>
+
+                <p>@project.Description</p>
+
+                @if (project.Details != null && project.Details.Any())
+                {
+                    <ul class="project-details">
+                        @foreach (var detail in project.Details.OrderBy(d => d.DisplayOrder))
+                        {
+                            <li>@detail.Description</li>
+                        }
+                    </ul>
+                }
+
+                @if (!string.IsNullOrEmpty(project.Url))
+                {
+                    <a href="@project.Url" target="_blank" rel="noopener noreferrer" class="btn">
+                        Voir le projet
+                    </a>
+                }
+
+                @if (project.Skills != null && project.Skills.Any())
+                {
+                    <div class="project-skills">
+                        @foreach (var skill in project.Skills.OrderBy(s => s.DisplayOrder))
+                        {
+                            <span class="skill-chip">@skill.Name</span>
+                        }
+                    </div>
+                }
+            </article>
+        }
+    }
+    else
+    {
+        <p>Chargement des projets...</p>
+    }
+</article>
+
+@code {
+    private List<Project>? projects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        projects = await Http.GetFromJsonAsync<List<Project>>("api/projects");
+    }
+}

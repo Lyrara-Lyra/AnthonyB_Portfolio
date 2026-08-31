@@ -1,0 +1,41 @@
+@using AnthonyB_Portfolio.Core.Entities
+@inject HttpClient Http
+
+<article class="hero-section">
+    <section class="intro">
+        <p>
+            Développeur Full-Stack bilingue (anglais/français) avec 5 ans d'expérience
+            en création de contenu (>80k abonnés) et développement web.
+            Habitué à la gestion de plannings stricts et à la vulgarisation d'informations complexes.
+            Fort d'une double compétence back-end (C#, PHP) et front-end (JS, React).
+        </p>
+    </section>
+
+    @if (categories != null && categories.Any())
+    {
+        <section class="skills-section">
+            <h3>Compétences Techniques</h3>
+            @foreach (var category in categories)
+            {
+                <div class="skill-category">
+                    <h4>@category.Name</h4>
+                    <div class="skill-chips">
+                        @foreach (var skill in category.Skills.OrderBy(s => s.DisplayOrder))
+                        {
+                            <span class="skill-chip">@skill.Name</span>
+                        }
+                    </div>
+                </div>
+            }
+        </section>
+    }
+</article>
+
+@code {
+    private List<Category>? categories;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await Http.GetFromJsonAsync<List<Category>>("api/categories");
+    }
+}

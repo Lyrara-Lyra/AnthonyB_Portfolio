@@ -1,23 +1,39 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<div class="portfolio-layout">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+        <header class="sidebar-header">
+            <h1>Anthony Bastien</h1>
+            <h2>Développeur Full-Stack</h2>
+            <p class="subtitle">C# / PHP / JavaScript</p>
+        </header>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h3>Contact</h3>
+                <a href="mailto:bastien.anthony@gmail.com" class="nav-link">
+                    <span class="icon">✉️</span> Email
+                </a>
+                <a href="https://github.com/Lyrara-Lyra" class="nav-link" target="_blank">
+                    <span class="icon">💻</span> GitHub
+                </a>
+                <a href="https://lyra-made-a.website" class="nav-link" target="_blank">
+                    <span class="icon">🌐</span> Site Web
+                </a>
+                <a href="https://locations-mimizan.fr" class="nav-link" target="_blank">
+                    <span class="icon">🏠</span> Locations Mimizan
+                </a>
+            </div>
+        </nav>
 
-        <article class="content px-4">
-            @Body
-        </article>
+        <footer class="sidebar-footer">
+            <p>© 2026</p>
+        </footer>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <main class="main-content">
+        @Body
     </main>
-</div>
-
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
 </div>
