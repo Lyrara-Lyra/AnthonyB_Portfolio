@@ -1,39 +1,8 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="portfolio-layout">
-    <!-- LEFT SIDEBAR -->
-    <aside class="sidebar">
-        <header class="sidebar-header">
-            <h1>Anthony Bastien</h1>
-            <h2>Développeur Full-Stack</h2>
-            <p class="subtitle">C# / PHP / JavaScript</p>
-        </header>
-
-        <nav class="sidebar-nav">
-            <div class="nav-section">
-                <h3>Contact</h3>
-                <a href="mailto:bastien.anthony@gmail.com" class="nav-link">
-                    <span class="icon">✉️</span> Email
-                </a>
-                <a href="https://github.com/Lyrara-Lyra" class="nav-link" target="_blank">
-                    <span class="icon">💻</span> GitHub
-                </a>
-                <a href="https://lyra-made-a.website" class="nav-link" target="_blank">
-                    <span class="icon">🌐</span> Site Web
-                </a>
-                <a href="https://locations-mimizan.fr" class="nav-link" target="_blank">
-                    <span class="icon">🏠</span> Locations Mimizan
-                </a>
-            </div>
-        </nav>
-
-        <footer class="sidebar-footer">
-            <p>© 2026</p>
-        </footer>
-    </aside>
-
-    <!-- RIGHT MAIN CONTENT -->
-    <main class="main-content">
+<div id="container">
+    <Sidebar />
+    <main>
         @Body
     </main>
 </div>

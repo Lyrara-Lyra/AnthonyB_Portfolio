@@ -1,54 +1,41 @@
 @using AnthonyB_Portfolio.Core.Entities
 @inject HttpClient Http
 
-<article class="projects-section">
+@page "/"
+
+<div id="projects-page">
     <h2>Projets</h2>
 
     @if (projects != null && projects.Any())
     {
+
+        <div id="projects-grid">
         @foreach (var project in projects)
         {
-            <article class="project-card">
-                <header>
+            <article>
+                <div class="project-intro">
                     <h3>@project.Title</h3>
-                </header>
-
-                <p>@project.Description</p>
-
-                @if (project.Details != null && project.Details.Any())
-                {
-                    <ul class="project-details">
-                        @foreach (var detail in project.Details.OrderBy(d => d.DisplayOrder))
-                        {
-                            <li>@detail.Description</li>
-                        }
-                    </ul>
-                }
-
-                @if (!string.IsNullOrEmpty(project.Url))
-                {
-                    <a href="@project.Url" target="_blank" rel="noopener noreferrer" class="btn">
-                        Voir le projet
-                    </a>
-                }
+                    <p>@project.Description</p>
+                </div>
 
                 @if (project.Skills != null && project.Skills.Any())
                 {
                     <div class="project-skills">
                         @foreach (var skill in project.Skills.OrderBy(s => s.DisplayOrder))
                         {
-                            <span class="skill-chip">@skill.Name</span>
+                            <span>@skill.Name</span>
                         }
                     </div>
                 }
             </article>
         }
+        </div>
     }
     else
     {
         <p>Chargement des projets...</p>
     }
-</article>
+</div>
 
 @code {
     private List<Project>? projects;

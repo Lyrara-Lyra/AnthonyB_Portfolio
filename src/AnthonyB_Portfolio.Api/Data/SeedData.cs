@@ -45,11 +45,11 @@ public static class SeedData
         var express = new Skill { Name = "Express", Category = backEndCategory, DisplayOrder = 7 };
         var symfony = new Skill { Name = "Symfony", Category = backEndCategory, DisplayOrder = 8 };
 
-        var javascript = new Skill { Name = "JavaScript (ES6+)", Category = frontEndCategory, DisplayOrder = 1 };
+        var javascript = new Skill { Name = "JS", Category = frontEndCategory, DisplayOrder = 1 };
         var react = new Skill { Name = "React", Category = frontEndCategory, DisplayOrder = 2 };
         var angular = new Skill { Name = "Angular", Category = frontEndCategory, DisplayOrder = 3 };
-        var html = new Skill { Name = "HTML5", Category = frontEndCategory, DisplayOrder = 4 };
-        var css = new Skill { Name = "CSS3", Category = frontEndCategory, DisplayOrder = 5 };
+        var html = new Skill { Name = "HTML", Category = frontEndCategory, DisplayOrder = 4 };
+        var css = new Skill { Name = "CSS", Category = frontEndCategory, DisplayOrder = 5 };
         var sass = new Skill { Name = "Sass/SCSS", Category = frontEndCategory, DisplayOrder = 6 };
         var bootstrap = new Skill { Name = "Bootstrap", Category = frontEndCategory, DisplayOrder = 7 };
         var wpf = new Skill { Name = "WPF", Category = frontEndCategory, DisplayOrder = 8 };
