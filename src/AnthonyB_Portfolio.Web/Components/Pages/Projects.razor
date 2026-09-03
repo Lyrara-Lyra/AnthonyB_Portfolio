@@ -6,28 +6,23 @@
 
 <div id="projects-page">
     <div id="projects-grid-container" class="@(selectedProject != null ? "shifted" : "")">
-        <h2>Projets</h2>
+        <h2>Projets notables</h2>
 
         @if (projects != null && projects.Any())
         {
             <div id="projects-grid">
-            @foreach (var project in projects)
+            @foreach (Project project in projects)
             {
                 <article @onclick="() => ShowProjectDetails(project)">
-                    <div class="project-intro">
-                        <h3>@project.Title</h3>
-                        <p>@project.Description</p>
-                    </div>
+                    <h3>@project.Title</h3>
+                    <p>@project.Description</p>
 
-                    @if (project.Skills != null && project.Skills.Any())
-                    {
-                        <div class="project-skills">
-                            @foreach (var skill in project.Skills.OrderBy(s => s.DisplayOrder))
-                            {
-                                <span>@skill.Name</span>
-                            }
-                        </div>
-                    }
+                    <div id="project-grid-skills">
+                        @foreach (Skill skill in project.Skills.OrderBy(s => s.DisplayOrder))
+                        {
+                            <span>@skill.Name</span>
+                        }
+                    </div>
                 </article>
             }
             </div>
@@ -38,58 +33,45 @@
         }
     </div>
 
-    <div id="project-detail-panel" class="project-detail-view @(selectedProject != null ? "active" : "")">
+    <div id="project-details-container" class="@(selectedProject != null ? "active" : "")">
         @if (selectedProject != null)
         {
-            <button class="back-btn" @onclick="CloseDetails">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"/>
-                    <polyline points="12 19 5 12 12 5"/>
-                </svg>
-                Retour
+            <button id="back-btn" @onclick="CloseDetails">
+                ← Retour
             </button>
 
-            <div class="detail-header">
-                <h1>@selectedProject.Title</h1>
-                @if (!string.IsNullOrEmpty(selectedProject.Url))
-                {
-                    <a href="@selectedProject.Url" target="_blank" class="project-url">@selectedProject.Url</a>
-                }
-            </div>
-
-            <div class="detail-content">
-                <div class="main-content">
+            <div id="project-details">
+                <header>
+                    <h3>@selectedProject.Title</h3>
                     <p>@selectedProject.Description</p>
                     
-                    @if (selectedProject.Details != null && selectedProject.Details.Any())
+                    <div id="project-details-skills">
+                        @foreach (Skill skill in selectedProject.Skills.OrderBy(s => s.DisplayOrder))
+                        {
+                            <span>@skill.Name</span>
+                        }
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(selectedProject.Url))
                     {
-                        <div class="project-details-section">
-                            @foreach (var detail in selectedProject.Details.OrderBy(d => d.DisplayOrder))
-                            {
-                                <p>@detail.Description</p>
-                            }
-                        </div>
+                        <a href="@selectedProject.Url" target="_blank" >@selectedProject.Url</a>
+                    }
+
+                </header>
+
+                <div id="project-details-description">                    
+                    @foreach (ProjectDetail detail in selectedProject.Details.OrderBy(d => d.DisplayOrder))
+                    {
+                        <p>@detail.Description</p>
                     }
                 </div>
 
-                <div class="sidebar-content">
-                    <div class="stats-box">
-                        <h4>Compétences</h4>
-                        @if (selectedProject.Skills != null && selectedProject.Skills.Any())
-                        {
-                            <div class="project-skills-detail">
-                                @foreach (var skill in selectedProject.Skills.OrderBy(s => s.DisplayOrder))
-                                {
-                                    <span class="skill-tag">@skill.Name</span>
-                                }
-                            </div>
-                        }
-                        else
-                        {
-                            <p>Aucune compétence spécifiée</p>
-                        }
-                    </div>
-                </div>
+                <aside>
+                    @foreach (ProjectScreenshot screenshot in selectedProject.Screenshots.OrderBy(s => s.DisplayOrder))
+                    {
+                        <img alt="screenshot-@screenshot.DisplayOrder" src="@screenshot.Url"/>
+                    }
+                </aside>
             </div>
         }
     </div>
