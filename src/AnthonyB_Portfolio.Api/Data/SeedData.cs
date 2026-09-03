@@ -48,11 +48,10 @@ public static class SeedData
         var javascript = new Skill { Name = "JS", Category = frontEndCategory, DisplayOrder = 1 };
         var react = new Skill { Name = "React", Category = frontEndCategory, DisplayOrder = 2 };
         var angular = new Skill { Name = "Angular", Category = frontEndCategory, DisplayOrder = 3 };
-        var html = new Skill { Name = "HTML", Category = frontEndCategory, DisplayOrder = 4 };
-        var css = new Skill { Name = "CSS", Category = frontEndCategory, DisplayOrder = 5 };
-        var sass = new Skill { Name = "Sass/SCSS", Category = frontEndCategory, DisplayOrder = 6 };
-        var bootstrap = new Skill { Name = "Bootstrap", Category = frontEndCategory, DisplayOrder = 7 };
-        var wpf = new Skill { Name = "WPF", Category = frontEndCategory, DisplayOrder = 8 };
+        var html = new Skill { Name = "HTML/CSS", Category = frontEndCategory, DisplayOrder = 4 };
+        var sass = new Skill { Name = "Sass/SCSS", Category = frontEndCategory, DisplayOrder = 5 };
+        var bootstrap = new Skill { Name = "Bootstrap", Category = frontEndCategory, DisplayOrder = 6 };
+        var wpf = new Skill { Name = "WPF", Category = frontEndCategory, DisplayOrder = 7 };
 
         var sqlServer = new Skill { Name = "SQL Server", Category = databasesCategory, DisplayOrder = 1 };
         var oracle = new Skill { Name = "Oracle", Category = databasesCategory, DisplayOrder = 2 };
@@ -71,7 +70,7 @@ public static class SeedData
 
         context.Skills.AddRange(
             csharp, dotnetCore, dotnetFramework, php, nodejs, express, entityFramework, symfony,
-            javascript, react, angular, html, css, sass, bootstrap, wpf,
+            javascript, react, angular, html, sass, bootstrap, wpf,
             sqlServer, oracle, mariadb, mongodb,
             git, azure, uml, merise, agile, cycleEnV,
             english, french
@@ -86,7 +85,7 @@ public static class SeedData
             Title = "Framework PHP Propriétaire",
             Description = "Conception et développement d'un framework PHP structuré pour optimiser la maintenance et le déploiement sur différents projets.",
             DisplayOrder = 1,
-            Skills = new List<Skill> { php, html, css },
+            Skills = new List<Skill> { php, html },
             Details = new List<ProjectDetail>
             {
                 new ProjectDetail { Description = "Conception d'une architecture MVC", DisplayOrder = 1 },
@@ -101,7 +100,7 @@ public static class SeedData
             Description = "Création et maintenance d'un site de location : analyse des besoins, développement et hébergement.",
             Url = "https://locations-mimizan.fr",
             DisplayOrder = 2,
-            Skills = new List<Skill> { php, html, css, javascript, mariadb },
+            Skills = new List<Skill> { php, html, javascript, mariadb },
             Details = new List<ProjectDetail>
             {
                 new ProjectDetail { Description = "Analyse complète des besoins clients et spécifications fonctionnelles", DisplayOrder = 1 },
@@ -114,11 +113,11 @@ public static class SeedData
 
         var lyraWebsite = new Project
         {
-            Title = "lyra-made-a.website",
+            Title = "Lyra-made-a.website",
             Description = "Site web bilingue Pokémon associé à une chaîne YouTube de plus de 80 000 abonnés. Intègre des guides interactifs et des bases de données complexes.",
             Url = "https://lyra-made-a.website",
             DisplayOrder = 3,
-            Skills = new List<Skill> { javascript, react, html, css, php, mariadb },
+            Skills = new List<Skill> { javascript, react, html, php, mariadb },
             Details = new List<ProjectDetail>
             {
                 new ProjectDetail { Description = "Développement d'un site bilingue complet en complément de chaine YouTube", DisplayOrder = 1 },
@@ -182,7 +181,7 @@ public static class SeedData
                 new Responsibility { Description = "Vulgarisation de systèmes complexes via scripts et supports visuels pour un but ludique", DisplayOrder = 3 },
                 new Responsibility { Description = "Développement et maintenance du site web bilingue lyra-made-a.website", DisplayOrder = 4 }
             },
-            Skills = new List<Skill> { php, javascript, react, html, css, mariadb, english }
+            Skills = new List<Skill> { php, javascript, react, html, mariadb, english }
         };
 
         // Emploi: Capgemini
@@ -259,7 +258,7 @@ public static class SeedData
             {
                 new Responsibility { Description = "Développement et amélioration des applications internes de l'entreprise", DisplayOrder = 1 }
             },
-            Skills = new List<Skill> { php, symfony, html, css }
+            Skills = new List<Skill> { php, symfony, html }
         };
 
         // Stage: Chrono Informatique
@@ -277,7 +276,7 @@ public static class SeedData
                 new Responsibility { Description = "Développement de la partie utilisateur : recherche de produits, panier, paiement PayPal, création de compte avec historique", DisplayOrder = 1 },
                 new Responsibility { Description = "Développement du back-office : gestion des produits, actualités et sauvegarde de la base de données", DisplayOrder = 2 }
             },
-            Skills = new List<Skill> { php, html, css, javascript }
+            Skills = new List<Skill> { php, html, javascript }
         };
 
         // Stage: Communauté d'Agglomération d'Agen
@@ -359,7 +358,7 @@ public static class SeedData
                 new Responsibility { Description = "Développement full-stack avec React, Node.js et Express", DisplayOrder = 3 },
                 new Responsibility { Description = "Utilisation de jQuery, D3 et MongoDB", DisplayOrder = 4 }
             },
-            Skills = new List<Skill> { react, nodejs, express, mongodb, javascript, html, css }
+            Skills = new List<Skill> { react, nodejs, express, mongodb, javascript, html }
         };
 
         // Formation: BTS Informatique de Gestion
@@ -378,7 +377,7 @@ public static class SeedData
                 new Responsibility { Description = "Maîtrise de la Programmation Orientée Objet", DisplayOrder = 2 },
                 new Responsibility { Description = "Modélisation de Bases de Données avec UML et SQL", DisplayOrder = 3 }
             },
-            Skills = new List<Skill> { uml, php, html, css, javascript }
+            Skills = new List<Skill> { uml, php, html, javascript }
         };
 
         context.Experiences.AddRange(

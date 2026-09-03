@@ -1,47 +1,116 @@
 @using AnthonyB_Portfolio.Core.Entities
 @inject HttpClient Http
 
-@page "/"
+@page "/projets"
+@rendermode InteractiveServer
 
 <div id="projects-page">
-    <h2>Projets</h2>
+    <div id="projects-grid-container" class="@(selectedProject != null ? "shifted" : "")">
+        <h2>Projets</h2>
 
-    @if (projects != null && projects.Any())
-    {
-
-        <div id="projects-grid">
-        @foreach (var project in projects)
+        @if (projects != null && projects.Any())
         {
-            <article>
-                <div class="project-intro">
-                    <h3>@project.Title</h3>
-                    <p>@project.Description</p>
+            <div id="projects-grid">
+            @foreach (var project in projects)
+            {
+                <article @onclick="() => ShowProjectDetails(project)">
+                    <div class="project-intro">
+                        <h3>@project.Title</h3>
+                        <p>@project.Description</p>
+                    </div>
+
+                    @if (project.Skills != null && project.Skills.Any())
+                    {
+                        <div class="project-skills">
+                            @foreach (var skill in project.Skills.OrderBy(s => s.DisplayOrder))
+                            {
+                                <span>@skill.Name</span>
+                            }
+                        </div>
+                    }
+                </article>
+            }
+            </div>
+        }
+        else
+        {
+            <p>Chargement des projets...</p>
+        }
+    </div>
+
+    <div id="project-detail-panel" class="project-detail-view @(selectedProject != null ? "active" : "")">
+        @if (selectedProject != null)
+        {
+            <button class="back-btn" @onclick="CloseDetails">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"/>
+                    <polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Retour
+            </button>
+
+            <div class="detail-header">
+                <h1>@selectedProject.Title</h1>
+                @if (!string.IsNullOrEmpty(selectedProject.Url))
+                {
+                    <a href="@selectedProject.Url" target="_blank" class="project-url">@selectedProject.Url</a>
+                }
+            </div>
+
+            <div class="detail-content">
+                <div class="main-content">
+                    <p>@selectedProject.Description</p>
+                    
+                    @if (selectedProject.Details != null && selectedProject.Details.Any())
+                    {
+                        <div class="project-details-section">
+                            @foreach (var detail in selectedProject.Details.OrderBy(d => d.DisplayOrder))
+                            {
+                                <p>@detail.Description</p>
+                            }
+                        </div>
+                    }
                 </div>
 
-                @if (project.Skills != null && project.Skills.Any())
-                {
-                    <div class="project-skills">
-                        @foreach (var skill in project.Skills.OrderBy(s => s.DisplayOrder))
+                <div class="sidebar-content">
+                    <div class="stats-box">
+                        <h4>Compétences</h4>
+                        @if (selectedProject.Skills != null && selectedProject.Skills.Any())
                         {
-                            <span>@skill.Name</span>
+                            <div class="project-skills-detail">
+                                @foreach (var skill in selectedProject.Skills.OrderBy(s => s.DisplayOrder))
+                                {
+                                    <span class="skill-tag">@skill.Name</span>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <p>Aucune compétence spécifiée</p>
                         }
                     </div>
-                }
-            </article>
+                </div>
+            </div>
         }
-        </div>
-    }
-    else
-    {
-        <p>Chargement des projets...</p>
-    }
+    </div>
 </div>
 
 @code {
     private List<Project>? projects;
+    private Project? selectedProject;
 
     protected override async Task OnInitializedAsync()
     {
         projects = await Http.GetFromJsonAsync<List<Project>>("api/projects");
+    }
+
+    private void ShowProjectDetails(Project project)
+    {
+        selectedProject = project;
+    }
+
+    private void CloseDetails()
+    {
+        selectedProject = null;
     }
 }

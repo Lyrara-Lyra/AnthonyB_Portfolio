@@ -1,6 +1,1 @@
 @AnthonyB_Portfolio.Api_HostAddress = http://localhost:5016
-
-GET {{AnthonyB_Portfolio.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
