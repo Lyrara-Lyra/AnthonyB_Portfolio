@@ -15,6 +15,7 @@ public class PortfolioDbContext : DbContext
     public DbSet<Responsibility> Responsibilities => Set<Responsibility>();
     public DbSet<Project> Projects => Set<Project>();
     public DbSet<ProjectDetail> ProjectDetails => Set<ProjectDetail>();
+    public DbSet<ProjectScreenshot> ProjectScreenshots => Set<ProjectScreenshot>();
 
     // This is where we configure how our C# classes map to database tables
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -60,6 +61,13 @@ public class PortfolioDbContext : DbContext
             .HasForeignKey(d => d.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        // One-to-many: Project → ProjectScreenshots
+        modelBuilder.Entity<Project>()
+            .HasMany(p => p.Screenshots)
+            .WithOne(s => s.Project)
+            .HasForeignKey(s => s.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         // String length validation
         modelBuilder.Entity<Category>()
             .Property(c => c.Name).HasMaxLength(50);
@@ -68,21 +76,26 @@ public class PortfolioDbContext : DbContext
             .Property(s => s.Name).HasMaxLength(60);
 
         modelBuilder.Entity<Experience>()
-            .Property(e => e.Title).HasMaxLength(120);
+            .Property(e => e.Title).HasMaxLength(100);
         modelBuilder.Entity<Experience>()
-            .Property(e => e.Organization).HasMaxLength(120);
+            .Property(e => e.Organization).HasMaxLength(100);
         modelBuilder.Entity<Experience>()
-            .Property(e => e.Location).HasMaxLength(120);
+            .Property(e => e.Location).HasMaxLength(100);
 
         modelBuilder.Entity<Responsibility>()
             .Property(r => r.Description).HasMaxLength(300);
 
         modelBuilder.Entity<Project>()
-            .Property(p => p.Title).HasMaxLength(120);
+            .Property(p => p.Title).HasMaxLength(100);
         modelBuilder.Entity<Project>()
-            .Property(p => p.Url).HasMaxLength(500);
+            .Property(p => p.Url).HasMaxLength(100);
 
         modelBuilder.Entity<ProjectDetail>()
             .Property(d => d.Description).HasMaxLength(300);
+
+        modelBuilder.Entity<ProjectScreenshot>()
+            .Property(s => s.Url).HasMaxLength(100);
+        modelBuilder.Entity<ProjectScreenshot>()
+            .Property(s => s.Caption).HasMaxLength(300);
     }
 }

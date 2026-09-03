@@ -10,4 +10,5 @@ public class Project
 
     public List<Skill> Skills { get; set; } = [];
     public List<ProjectDetail> Details { get; set; } = [];
+    public List<ProjectScreenshot> Screenshots { get; set; } = [];
 }

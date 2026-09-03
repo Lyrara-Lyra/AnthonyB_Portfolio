@@ -9,11 +9,14 @@ public static class SeedData
     {
         using var context = serviceProvider.GetRequiredService<PortfolioDbContext>();
 
-        // The database is not empty
-        if (context.Categories.Any())
-        {
-            return; // Database has already been seeded
-        }
+        // Clear existing data
+        context.Categories.RemoveRange(context.Categories);
+        context.Skills.RemoveRange(context.Skills);
+        context.Projects.RemoveRange(context.Projects);
+        context.ProjectDetails.RemoveRange(context.ProjectDetails);
+        context.Experiences.RemoveRange(context.Experiences);
+        context.Responsibilities.RemoveRange(context.Responsibilities);
+        context.SaveChanges();
 
         // =============================================
         // CATEGORIES
@@ -91,6 +94,10 @@ public static class SeedData
                 new ProjectDetail { Description = "Conception d'une architecture MVC", DisplayOrder = 1 },
                 new ProjectDetail { Description = "Implémentation d'un système de routing personnalisé", DisplayOrder = 2 },
                 new ProjectDetail { Description = "Séparation claire de la logique d'accès aux données (DAL)", DisplayOrder = 3 }
+            },
+            Screenshots = new List<ProjectScreenshot>
+            {
+                new ProjectScreenshot { Url = "", DisplayOrder = 1, Caption = "" }
             }
         };
 
