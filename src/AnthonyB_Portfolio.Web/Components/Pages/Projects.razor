@@ -1,31 +1,38 @@
 @using AnthonyB_Portfolio.Core.Entities
+@using AnthonyB_Portfolio.Web.Components.Shared
 @inject HttpClient Http
+@rendermode InteractiveServer
 
 @page "/projets"
-@rendermode InteractiveServer
 
 <div id="projects-page">
     <div id="projects-grid-container" class="@(selectedProject != null ? "shifted" : "")">
-        <h2>Projets notables</h2>
+        <h2>Projets Notables</h2>
 
         @if (projects != null && projects.Any())
         {
             <div id="projects-grid">
-            @foreach (Project project in projects)
-            {
-                <article @onclick="() => ShowProjectDetails(project)">
-                    <h3>@project.Title</h3>
-                    <p>@project.Description</p>
+                @foreach (Project project in projects)
+                {
+                    <article @onclick="() => ShowProjectDetails(project)">
+                        <h3>@project.Title</h3>
+                        <p>@project.Description</p>
 
-                    <div id="project-grid-skills">
-                        @foreach (Skill skill in project.Skills.OrderBy(s => s.DisplayOrder))
-                        {
-                            <span>@skill.Name</span>
-                        }
-                    </div>
-                </article>
-            }
+                        <div class="project-grid-skills">
+                            @foreach (Skill skill in project.Skills)
+                            {
+                                <span>@skill.Name</span>
+                            }
+                        </div>
+                    </article>
+                }
             </div>
+        }
+        else if (fetchError)
+        {
+            <ErrorMessage>
+                Erreur lors du chargement des projets. Veuillez réessayer plus tard.
+            </ErrorMessage>
         }
         else
         {
@@ -46,7 +53,7 @@
                     <p>@selectedProject.Description</p>
                     
                     <div id="project-details-skills">
-                        @foreach (Skill skill in selectedProject.Skills.OrderBy(s => s.DisplayOrder))
+                        @foreach (Skill skill in selectedProject.Skills)
                         {
                             <span>@skill.Name</span>
                         }
@@ -60,14 +67,14 @@
                 </header>
 
                 <div id="project-details-description">                    
-                    @foreach (ProjectDetail detail in selectedProject.Details.OrderBy(d => d.DisplayOrder))
+                    @foreach (ProjectDetail detail in selectedProject.Details)
                     {
                         <p>@detail.Description</p>
                     }
                 </div>
 
                 <aside>
-                    @foreach (ProjectScreenshot screenshot in selectedProject.Screenshots.OrderBy(s => s.DisplayOrder))
+                    @foreach (ProjectScreenshot screenshot in selectedProject.Screenshots)
                     {
                         <img alt="screenshot-@screenshot.DisplayOrder" src="@screenshot.Url"/>
                     }
@@ -80,17 +87,50 @@
 @code {
     private List<Project>? projects;
     private Project? selectedProject;
+    private bool fetchError = false;
 
+    // Fetch the projects upon loading 
     protected override async Task OnInitializedAsync()
     {
-        projects = await Http.GetFromJsonAsync<List<Project>>("api/projects");
+        try 
+        {
+            // Fetch the projects from the API
+            projects = await Http.GetFromJsonAsync<List<Project>>("api/projects");
+
+            // Projects are found
+            if (projects != null)
+            {
+                // Sort the collections
+                foreach (Project p in projects)
+                {
+                    p.Skills = p.Skills.OrderBy(s => s.DisplayOrder).ToList();
+                    p.Details = p.Details.OrderBy(d => d.DisplayOrder).ToList();
+                    p.Screenshots = p.Screenshots.OrderBy(s => s.DisplayOrder).ToList();
+                }
+            }
+            // No projects found
+            else
+            {
+                // Error fectching projects
+                fetchError = true;
+            }
+
+        }
+        catch (Exception err)
+        {
+            // Error fetching projects
+            fetchError = true;
+            Console.WriteLine($"Error fetch projects: {err.Message}");
+        }
     }
 
+    // Select the project when the card is clicked on
     private void ShowProjectDetails(Project project)
     {
         selectedProject = project;
     }
 
+    // Close the details view
     private void CloseDetails()
     {
         selectedProject = null;

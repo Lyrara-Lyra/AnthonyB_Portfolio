@@ -1,5 +1,110 @@
+@using AnthonyB_Portfolio.Core.Entities
+@using AnthonyB_Portfolio.Web.Components.Shared
+@inject HttpClient Http
+@rendermode InteractiveServer
+
 @page "/parcours"
 
-<div id="page-parcours">
-    <h2>Timeline</h2>
+<div id="experiences-page">
+    <h2>Parcours Professionnel</h2>
+
+    @if (experiences != null && experiences.Any())
+    {
+        <div id="experiences-timeline">
+            @foreach (Experience exp in experiences)
+            {
+                bool isExpanded = selectedExp == exp;
+
+                <article class="@(isExpanded ? "active" : "")" @onclick="() => ToggleExpand(exp)">
+                    <div class="timeline-dot"></div>
+                    
+                    <div class="experience">
+                        <header>
+                            <div>
+                                <h3>@exp.Title</h3>
+                                <h4>@exp.Organization</h4>
+                            </div>
+                            <span>@exp.StartTime.ToShortDateString() - @(exp.EndDate?.ToShortDateString() ?? "Présent")</span>
+                        </header>
+
+                        @if (isExpanded)
+                        {
+                            <div class="experience-details">
+                                <ul>
+                                    @foreach (Responsibility responsibility in exp.Responsibilities)
+                                    {
+                                        <li>@responsibility.Description</li>
+                                    }
+                                </ul>
+                                <aside>
+                                    @foreach (Skill skill in exp.Skills)
+                                    {
+                                        <span>@skill.Name</span>
+                                    }
+                                </aside>
+                            </div>
+                        }
+                    </div>
+                </article>
+            }
+        </div>
+    }
+    else if (fetchError)
+    {
+        <ErrorMessage>
+            Erreur lors du chargement des expériences. Veuillez réessayer plus tard.
+        </ErrorMessage>
+    }
+    else
+    {
+        <p>Chargement des expériences...</p>
+    }
 </div>
+
+@code {
+    private List<Experience>? experiences;
+    private Experience? selectedExp;
+    private bool fetchError = false;
+
+    // Fetch the experiences upon loading
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Fetch the experiences from the API
+            experiences = await Http.GetFromJsonAsync<List<Experience>>("api/experiences");
+
+            // Experiences are found
+            if (experiences != null)
+            {
+                // Sort the experiences
+                experiences = experiences.OrderByDescending(e => e.StartTime).ToList();
+
+                // Sort the collections
+                foreach (Experience e in experiences)
+                {
+                    e.Responsibilities = e.Responsibilities.OrderBy(r => r.DisplayOrder).ToList();
+                    e.Skills = e.Skills.OrderBy(s => s.DisplayOrder).ToList();
+                }
+            }
+            // No experiences found
+            else
+            {
+                // Error fetching experiences
+                fetchError = true;
+            }
+        }
+        catch (Exception err)
+        {
+            // Error fetching experiences
+            fetchError = true;
+            Console.WriteLine($"Error fetch experiences: {err.Message}");
+        }
+    }
+
+    // Toggle the expanded view when clicking on an experience
+    private void ToggleExpand(Experience exp)
+    {
+        selectedExp = selectedExp == exp ? null : exp;
+    }
+}
