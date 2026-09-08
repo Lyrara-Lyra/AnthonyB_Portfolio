@@ -1,11 +1,35 @@
-#container {
-    display: flex;
-    min-height: 100vh;
+/* --- Floating panels layout --- */
+#main-layout {
+    background-color: var(--bg-app);
+    font-family: 'Segoe UI', sans-serif;
+    display: grid;
+    gap: 30px;
+    padding: 25px;
+    width: 100%;
+    grid-template-columns: 300px 1fr;
+    transition: background-color var(--theme-transition);
 }
 
-main {
-    flex: 1;
-    position: relative;
+#main-layout > * {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    backdrop-filter: var(--backdrop);
+    border-radius: 20px;
     overflow: hidden;
-    background-color: var(--bg-base);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow);
+    padding: 20px 25px;
+    transition: 
+        background-color var(--theme-transition), 
+        border-color var(--theme-transition), 
+        color var(--theme-transition), 
+        box-shadox var(--theme-transition);
+}
+
+#main-layout aside {
+    padding: 20px 25px;
+}
+
+#main-layout main {
+    padding: 30px 40px;
 }

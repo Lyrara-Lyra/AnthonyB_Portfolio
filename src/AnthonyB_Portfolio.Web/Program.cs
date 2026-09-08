@@ -1,16 +1,20 @@
 using AnthonyB_Portfolio.Web.Components;
+using AnthonyB_Portfolio.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add HttpClient for calling Api
+// Add HttpClient for calling the Api
 builder.Services.AddScoped(sp => new HttpClient
 {
     BaseAddress = new Uri("http://localhost:5016")
 });
 
-// Add services to the container.
+// Add Blazor services
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Add other services
+builder.Services.AddScoped<ThemeService>();
 
 var app = builder.Build();
 

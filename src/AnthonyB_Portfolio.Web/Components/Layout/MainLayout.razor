@@ -1,8 +1,35 @@
 ﻿@inherits LayoutComponentBase
+@inject Services.ThemeService ThemeService
+@implements IDisposable
 
-<div id="container">
-    <Sidebar />
+<div id="main-layout" data-theme="@ThemeService.CurrentTheme">
+    <aside>
+        <Sidebar />
+    </aside>
     <main>
         @Body
     </main>
 </div>
+
+@code {
+    // Subcribes to theme changes when loaded
+    protected override void OnInitialized()
+    {
+        ThemeService.OnChange += StateHasChanged;
+    }
+
+    // Unsubscribes when unloaded
+    public void Dispose()
+    {
+        ThemeService.OnChange -= StateHasChanged;
+    }
+
+    // Loads the saved theme when first rendered
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ThemeService.InitializeAsync();
+        }
+    }
+}

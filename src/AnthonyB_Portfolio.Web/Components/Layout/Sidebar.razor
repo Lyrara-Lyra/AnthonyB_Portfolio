@@ -1,14 +1,23 @@
-<aside id="sidebar">
+@inject Services.ThemeService ThemeService
+
+<div id="sidebar">
     <header>
         <h1>Anthony Bastien</h1>
         <div id="job-descr">
-            <h2>Développeur d'Applications</h2>
-            <p>C# • PHP • JavaScript</p>
+            <h2>Développeur Web / C#</h2>
         </div>
 
-        <div id="current-status">
-            En recherche active
-        </div>
+        <nav id="links">
+            <a href="mailto:bastien.anthony@gmail.com">
+                Email
+            </a>
+            <a href="https://github.com/Lyrara-Lyra" target="_blank">
+                GitHub
+            </a>
+            <a href="">
+                CV
+            </a>
+        </nav>
     </header>
 
     <nav>
@@ -25,24 +34,16 @@
 
     <footer>
         <div id="contact-info">
-            <p>Colayrac-St-Circ, 47</p>
-            <p>06.50.10.45.33</p>
-            <p>Bilingue FR/EN</p>
+            <p id="current-status">
+                <span></span>En recherche active
+            </p>
+            <p><span>🏠</span>Colayrac-St-Circ, 47</p>
+            <p><span>📞</span>06.50.10.45.33</p>
+            <p><span>💬</span>Bilingue Fr/En</p>
         </div>
 
-        <div id="links">
-            <a href="mailto:bastien.anthony@gmail.com">
-                Email
-            </a>
-            <a href="https://github.com/Lyrara-Lyra" target="_blank">
-                GitHub
-            </a>
-            <a href="">
-                CV
-            </a>
-        </div>
-        <button>
+        <button @onclick="ThemeService.ToggleThemeAsync">
             Switch theme
         </button>
     </footer>
-</aside>
+</div>

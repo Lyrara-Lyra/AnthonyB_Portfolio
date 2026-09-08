@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.OpenApi
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,11 +11,12 @@
     <link rel="stylesheet" href="@Assets["AnthonyB_Portfolio.Web.styles.css"]" />
     <ImportMap />
     <link rel="icon" type="image/png" href="favicon.png" />
-    <HeadOutlet />
+    <HeadOutlet @rendermode="InteractiveServer"/>
+    <script src="@Assets["js/theme-init.js"]"></script>
 </head>
 
 <body>
-    <Routes />
+    <Routes @rendermode="InteractiveServer" />
     <script src="@Assets["_framework/blazor.web.js"]"></script>
 </body>
 
