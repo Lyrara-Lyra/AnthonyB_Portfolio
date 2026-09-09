@@ -15,7 +15,7 @@
     color: var(--text-main);
     backdrop-filter: var(--backdrop);
     border-radius: 20px;
-    overflow: hidden;
+    overflow: scroll;
     border: 1px solid var(--border-color);
     box-shadow: var(--box-shadow);
     padding: 20px 25px;

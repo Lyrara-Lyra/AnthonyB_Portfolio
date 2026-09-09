@@ -3,10 +3,12 @@
 <div id="sidebar">
     <header>
         <h1>Anthony Bastien</h1>
-        <h2>Développeur Web / C#</h2>
-        <p id="current-status">
-            En recherche active
-        </p>
+        <div id="job-descr">
+            <h2>Développeur Web / C#</h2>
+            <p id="current-status">
+                En recherche active
+            </p>
+        </div>
     </header>
 
     <nav>
@@ -25,7 +27,7 @@
         <div id="contact-info">
             <p><span>🏠</span>Colayrac-St-Circ, 47</p>
             <p><span>📞</span>06.50.10.45.33</p>
-            <p><span>💬</span>Bilingue Fr/En</p>
+            <p><span>💬</span>Bilingue FR/EN</p>
         </div>
 
         <nav id="links">
@@ -41,7 +43,10 @@
         </nav>
 
         <button @onclick="ThemeService.ToggleThemeAsync">
-            Switch theme
+            <div id="theme-slider">
+                <p><span>🌙</span>Dark theme</p>
+                <p>Light theme<span>☀️</span></p>
+            </div>
         </button>
     </footer>
 </div>
