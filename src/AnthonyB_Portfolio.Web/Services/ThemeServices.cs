@@ -41,7 +41,7 @@ namespace AnthonyB_Portfolio.Web.Services
             NotifyStateChanged();
         }
 
-        // OnChange event
+        // Updates the subscribers on state change
         private void NotifyStateChanged() => OnChange?.Invoke();
     }
 }

@@ -1,7 +1,7 @@
 /* --- Floating panels layout --- */
 #main-layout {
     background-color: var(--bg-app);
-    font-family: 'Segoe UI', sans-serif;
+    font-family: sans-serif;
     display: grid;
     gap: 30px;
     padding: 25px;

@@ -3,21 +3,10 @@
 <div id="sidebar">
     <header>
         <h1>Anthony Bastien</h1>
-        <div id="job-descr">
-            <h2>Développeur Web / C#</h2>
-        </div>
-
-        <nav id="links">
-            <a href="mailto:bastien.anthony@gmail.com">
-                Email
-            </a>
-            <a href="https://github.com/Lyrara-Lyra" target="_blank">
-                GitHub
-            </a>
-            <a href="">
-                CV
-            </a>
-        </nav>
+        <h2>Développeur Web / C#</h2>
+        <p id="current-status">
+            En recherche active
+        </p>
     </header>
 
     <nav>
@@ -34,13 +23,22 @@
 
     <footer>
         <div id="contact-info">
-            <p id="current-status">
-                <span></span>En recherche active
-            </p>
             <p><span>🏠</span>Colayrac-St-Circ, 47</p>
             <p><span>📞</span>06.50.10.45.33</p>
             <p><span>💬</span>Bilingue Fr/En</p>
         </div>
+
+        <nav id="links">
+            <a href="mailto:bastien.anthony@gmail.com">
+                Email
+            </a>
+            <a href="https://github.com/Lyrara-Lyra" target="_blank">
+                GitHub
+            </a>
+            <a href="">
+                CV
+            </a>
+        </nav>
 
         <button @onclick="ThemeService.ToggleThemeAsync">
             Switch theme
