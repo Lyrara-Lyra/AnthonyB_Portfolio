@@ -1,0 +1,51 @@
+/* --- Home Page --- */
+#home-page {
+    display: flex;
+    max-width: 900px;
+    gap: 40px;
+    margin: 0 auto;
+}
+
+/* --- Left Column: Title --- */
+#title h3 {
+    font-size: 3rem;
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--accent-primary);
+}
+
+/* --- Right Column: Content --- */
+#presentation {
+    padding-top: 10px;
+}
+
+#presentation p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+#presentation nav {
+    display: flex;
+    gap: 20px;
+    margin-top: 27px;
+}
+
+/* --- Buttons --- */
+#presentation nav a {
+    padding: 14px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.1s;
+    border: 2px solid var(--accent-primary);
+    background: transparent;
+    color: var(--accent-primary);
+}
+
+#presentation nav a:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #ffffff;
+}
