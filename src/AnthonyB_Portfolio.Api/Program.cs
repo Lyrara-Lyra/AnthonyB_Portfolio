@@ -45,7 +45,6 @@ app.MapGet("/api/categories", async (PortfolioDbContext context) =>
 {
     return await context.Categories
         .OrderBy(c => c.DisplayOrder)
-        .Include(c => c.Skills.OrderBy(s => s.DisplayOrder))
         .ToListAsync();
 });
 
@@ -53,7 +52,6 @@ app.MapGet("/api/skills", async (PortfolioDbContext context) =>
 {
     return await context.Skills
         .OrderBy(s => s.Category!.DisplayOrder)
-        .ThenBy(s => s.DisplayOrder)
         .Include(s => s.Category)
         .ToListAsync();
 });
@@ -61,18 +59,23 @@ app.MapGet("/api/skills", async (PortfolioDbContext context) =>
 app.MapGet("/api/projects", async (PortfolioDbContext context) =>
 {
     return await context.Projects
-        .OrderBy(p => p.DisplayOrder)
-        .Include(p => p.Skills.OrderBy(s => s.DisplayOrder))
+        .Where(p => p.IsVisible)
+        .OrderBy(p => p.Id)
+        .Include(p => p.Skills.OrderBy(ps => ps.DisplayOrder))
+        .ThenInclude(ps => ps.Skill)
         .Include(p => p.Details.OrderBy(d => d.DisplayOrder))
+        .Include(p => p.Screenshots.OrderBy(s => s.DisplayOrder))
         .ToListAsync();
 });
 
 app.MapGet("/api/experiences", async (PortfolioDbContext context) =>
 {
     return await context.Experiences
+        .Where(e => e.IsVisible)
         .OrderByDescending(e => e.StartTime)
         .Include(e => e.Responsibilities.OrderBy(r => r.DisplayOrder))
-        .Include(e => e.Skills.OrderBy(s => s.DisplayOrder))
+        .Include(e => e.Skills.OrderBy(es => es.DisplayOrder))
+        .ThenInclude(es => es.Skill)
         .ToListAsync();
 });
 

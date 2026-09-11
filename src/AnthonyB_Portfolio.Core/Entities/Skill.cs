@@ -7,12 +7,11 @@ public class Skill
     public int Id { get; set; }
     public required string Name { get; set; }
     public int CategoryId { get; set; }
-    public int DisplayOrder { get; set; }
 
     [JsonIgnore]
     public Category Category { get; set; } = null!;
     [JsonIgnore]
-    public List<Project> Projects { get; set; } = [];
+    public List<ProjectSkill> ProjectSkills { get; set; } = [];
     [JsonIgnore]
-    public List<Experience> Experiences { get; set; } = [];
+    public List<ExperienceSkill> ExperienceSkills { get; set; } = [];
 }

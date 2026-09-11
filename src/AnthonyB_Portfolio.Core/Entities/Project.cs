@@ -6,9 +6,9 @@ public class Project
     public required string Title { get; set; }
     public required string Description { get; set; }
     public string? Url { get; set; }
-    public int DisplayOrder { get; set; }
+    public bool IsVisible { get; set; } = false;
 
-    public List<Skill> Skills { get; set; } = [];
+    public List<ProjectSkill> Skills { get; set; } = [];
     public List<ProjectDetail> Details { get; set; } = [];
     public List<ProjectScreenshot> Screenshots { get; set; } = [];
 }

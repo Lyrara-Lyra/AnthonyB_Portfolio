@@ -19,9 +19,9 @@
                         <p>@project.Description</p>
 
                         <div class="project-grid-skills">
-                            @foreach (Skill skill in project.Skills)
+                            @foreach (ProjectSkill skill in project.Skills)
                             {
-                                <span>@skill.Name</span>
+                                <span class="@(skill.IsHighlighted ? "highlight" : "")" >@skill.Skill.Name</span>
                             }
                         </div>
                     </article>
@@ -53,9 +53,9 @@
                     <p>@selectedProject.Description</p>
                     
                     <div id="project-details-skills">
-                        @foreach (Skill skill in selectedProject.Skills)
+                        @foreach (ProjectSkill skill in selectedProject.Skills)
                         {
-                            <span>@skill.Name</span>
+                            <span class="@(skill.IsHighlighted ? "highlight" : "")">@skill.Skill.Name</span>
                         }
                     </div>
 

@@ -16,43 +16,56 @@ public class PortfolioDbContext : DbContext
     public DbSet<Project> Projects => Set<Project>();
     public DbSet<ProjectDetail> ProjectDetails => Set<ProjectDetail>();
     public DbSet<ProjectScreenshot> ProjectScreenshots => Set<ProjectScreenshot>();
+    public DbSet<ProjectSkill> ProjectSkills => Set<ProjectSkill>();
+    public DbSet<ExperienceSkill> ExperienceSkills => Set<ExperienceSkill>();
 
-    // This is where we configure how our C# classes map to database tables
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Many-to-many: Skill ↔ Project
-        modelBuilder.Entity<Skill>()
-            .HasMany(s => s.Projects)
+        // ProjectSkill join entity
+        modelBuilder.Entity<ProjectSkill>()
+            .HasKey(ps => new { ps.ProjectId, ps.SkillId });
+
+        modelBuilder.Entity<ProjectSkill>()
+            .HasOne(ps => ps.Project)
             .WithMany(p => p.Skills)
-            .UsingEntity<Dictionary<string, object>>(
-                // Name of the join table
-                "ProjectSkills",                
-                j => j.HasOne<Project>().WithMany().HasForeignKey("ProjectId"),
-                j => j.HasOne<Skill>().WithMany().HasForeignKey("SkillId")
-            );
+            .HasForeignKey(ps => ps.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade);
 
-        // Many-to-many: Skill ↔ Experience
-        modelBuilder.Entity<Skill>()
-            .HasMany(s => s.Experiences)
+        modelBuilder.Entity<ProjectSkill>()
+            .HasOne(ps => ps.Skill)
+            .WithMany(s => s.ProjectSkills)
+            .HasForeignKey(ps => ps.SkillId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // ExperienceSkill join entity
+        modelBuilder.Entity<ExperienceSkill>()
+            .HasKey(es => new { es.ExperienceId, es.SkillId });
+
+        modelBuilder.Entity<ExperienceSkill>()
+            .HasOne(es => es.Experience)
             .WithMany(e => e.Skills)
-            .UsingEntity<Dictionary<string, object>>(
-                "ExperienceSkills",
-                j => j.HasOne<Experience>().WithMany().HasForeignKey("ExperienceId"),
-                j => j.HasOne<Skill>().WithMany().HasForeignKey("SkillId"));
+            .HasForeignKey(es => es.ExperienceId)
+            .OnDelete(DeleteBehavior.Cascade);
 
-        // One-to-many: Category → Skills (Restrict cascade delete)
+        modelBuilder.Entity<ExperienceSkill>()
+            .HasOne(es => es.Skill)
+            .WithMany(s => s.ExperienceSkills)
+            .HasForeignKey(es => es.SkillId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // One-to-many: Category → Skills
         modelBuilder.Entity<Category>()
             .HasMany(c => c.Skills)
             .WithOne(s => s.Category)
             .HasForeignKey(s => s.CategoryId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // One-to-many: Experience → Responsibilities (Cascade delete)
+        // One-to-many: Experience → Responsibilities
         modelBuilder.Entity<Experience>()
             .HasMany(e => e.Responsibilities)
             .WithOne(r => r.Experience)
             .HasForeignKey(r => r.ExperienceId)
-            .OnDelete(DeleteBehavior.Cascade);  // Delete responsibilities with experience
+            .OnDelete(DeleteBehavior.Cascade);
 
         // One-to-many: Project → ProjectDetails
         modelBuilder.Entity<Project>()

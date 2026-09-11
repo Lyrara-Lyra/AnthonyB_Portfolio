@@ -36,9 +36,9 @@
                                     }
                                 </ul>
                                 <aside>
-                                    @foreach (Skill skill in exp.Skills)
+                                    @foreach (ExperienceSkill skill in exp.Skills)
                                     {
-                                        <span>@skill.Name</span>
+                                        <span class="@(skill.IsHighlighted ? "highlight" : "")" >@skill.Skill.Name</span>
                                     }
                                 </aside>
                             </div>
