@@ -1,0 +1,167 @@
+/* --- Projects page --- */
+#projects-page {
+    position: relative;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* --- Projects grid --- */
+#projects-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#projects-grid-container h2 {
+    text-align: center;
+    color: var(--accent-primary);
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+#projects-grid-container.shifted {
+    pointer-events: none;
+}
+
+#projects-grid {
+    padding: 0 4px;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+}
+
+#projects-grid article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-panel);
+    border-radius: 10px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition:
+        box-shadow 0.2s,
+        transform 0.2s,
+        border 0.2s;
+}
+
+#projects-grid article:hover {
+    border: 1px solid var(--accent-primary);
+    transform: translate(4px, -4px);
+    box-shadow: -4px 4px 0 var(--accent-primary);
+}
+
+.project-grid-descr h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.project-grid-descr p {
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.project-grid-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 6px;
+}
+
+/* --- Project details --- */
+#project-details-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-surface);
+    z-index: 10;
+    transform: translateX(100%);
+    transition: 
+        transform 0.4s ease-out;
+}
+
+#project-details-container.active {
+    transform: translateX(0%);
+    visibility: visible;
+}
+
+#back-btn {
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+#back-btn:hover {
+    text-decoration: underline;
+}
+
+/* 4. Detailed Layout Grid Mapping */
+#project-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+        "header header"
+        "separator separator"
+        "desc screenshots";
+    gap: 1.5rem;
+}
+
+/* Header Area (Top) */
+#project-details header {
+    grid-area: header;
+}
+
+#project-details-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+/* Structural Separator (Middle) */
+#project-details::before {
+    content: "";
+    grid-area: separator;
+    border-bottom: 1px solid #e2e8f0;
+    width: 100%;
+    height: 1px;
+}
+
+/* Description Area (Left) */
+#project-details-description {
+    grid-area: desc;
+    color: #334155;
+    line-height: 1.6;
+}
+
+#project-details-description p {
+    margin-bottom: 1rem;
+}
+
+/* Screenshot Area (Right) */
+#project-details aside {
+    grid-area: screenshots;
+    background-color: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 250px;
+}
+
+#project-details aside img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}

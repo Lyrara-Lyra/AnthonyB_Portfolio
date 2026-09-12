@@ -7,7 +7,6 @@
     padding: 25px;
     width: 100%;
     grid-template-columns: 300px 1fr;
-    transition: background-color var(--theme-transition);
 }
 
 #main-layout > * {
@@ -15,15 +14,9 @@
     color: var(--text-main);
     backdrop-filter: var(--backdrop);
     border-radius: 20px;
-    overflow: scroll;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-surface);
     box-shadow: var(--box-shadow);
     padding: 20px 25px;
-    transition: 
-        background-color var(--theme-transition), 
-        border-color var(--theme-transition), 
-        color var(--theme-transition), 
-        box-shadox var(--theme-transition);
 }
 
 #main-layout aside {
@@ -34,5 +27,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 35px;
+    overflow: hidden;
+    padding: 20px 25px;
 }

@@ -4,6 +4,8 @@
     max-width: 900px;
     gap: 40px;
     margin: 0 auto;
+    padding: 0 15px;
+    overflow: scroll;
 }
 
 /* --- Left Column: Title --- */

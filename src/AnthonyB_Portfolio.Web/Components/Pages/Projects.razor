@@ -8,20 +8,21 @@
 <div id="projects-page">
     <div id="projects-grid-container" class="@(selectedProject != null ? "shifted" : "")">
         <h2>Projets Notables</h2>
-
         @if (projects != null && projects.Any())
         {
             <div id="projects-grid">
                 @foreach (Project project in projects)
                 {
                     <article @onclick="() => ShowProjectDetails(project)">
-                        <h3>@project.Title</h3>
-                        <p>@project.Description</p>
+                        <div class="project-grid-descr">
+                            <h3>@project.Title</h3>
+                            <p>@project.Description</p>
+                        </div>
 
                         <div class="project-grid-skills">
                             @foreach (ProjectSkill skill in project.Skills)
                             {
-                                <span class="@(skill.IsHighlighted ? "highlight" : "")" >@skill.Skill.Name</span>
+                                <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
                             }
                         </div>
                     </article>
@@ -55,7 +56,7 @@
                     <div id="project-details-skills">
                         @foreach (ProjectSkill skill in selectedProject.Skills)
                         {
-                            <span class="@(skill.IsHighlighted ? "highlight" : "")">@skill.Skill.Name</span>
+                            <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
                         }
                     </div>
 

@@ -1,0 +1,11 @@
+<span class="skill-badge @(IsHighlighted ? "highlighted" : "")">
+    @Name
+</span>
+
+@code {
+    [Parameter, EditorRequired]
+    public string Name { get; set; } = String.Empty;
+
+    [Parameter]
+    public bool IsHighlighted { get; set; }
+}

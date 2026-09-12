@@ -1,0 +1,14 @@
+.skill-badge {
+    background-color: var(--accent-bg);
+    color: var(--accent-primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.skill-badge.highlighted {
+    background-color: var(--accent-primary);
+    color: var(--accent-text);
+}

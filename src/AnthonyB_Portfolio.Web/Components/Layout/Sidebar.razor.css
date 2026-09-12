@@ -68,6 +68,7 @@ header h2 {
     border: 2px solid transparent;
     transition: 
         background-color 0.2s,
+        color 0.2s,
         padding 0.2s;
 }
 
@@ -137,7 +138,9 @@ header h2 {
     text-decoration: none;
     font-size: 0.8rem;
     font-weight: bold;
-    transition: all 0.1s;
+    transition: 
+        background-color 0.1s,
+        color 0.1s;
 }
 
 #links a:hover {
@@ -156,9 +159,11 @@ button {
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
-    transition: all 0.1s;
     overflow: hidden;
     cursor: pointer;
+    transition: 
+        background-color 0.1s,
+        color 0.1s;
 }
 
 button:hover {
@@ -169,7 +174,6 @@ button:hover {
 #theme-slider {
     display: flex;
     width: 200%;
-    transition: transform 0.3s;
 }
 
 [data-theme="dark"] #theme-slider {

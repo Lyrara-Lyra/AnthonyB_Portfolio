@@ -38,7 +38,7 @@
                                 <aside>
                                     @foreach (ExperienceSkill skill in exp.Skills)
                                     {
-                                        <span class="@(skill.IsHighlighted ? "highlight" : "")" >@skill.Skill.Name</span>
+                                        <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
                                     }
                                 </aside>
                             </div>
