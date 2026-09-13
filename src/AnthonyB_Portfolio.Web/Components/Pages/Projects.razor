@@ -6,7 +6,7 @@
 @page "/projets"
 
 <div id="projects-page">
-    <div id="projects-grid-container" class="@(selectedProject != null ? "shifted" : "")">
+    <div id="projects-grid-container" class="@(isDetailsActive ? "shifted" : "")">
         <h2>Projets Notables</h2>
         @if (projects != null && projects.Any())
         {
@@ -41,7 +41,7 @@
         }
     </div>
 
-    <div id="project-details-container" class="@(selectedProject != null ? "active" : "")">
+    <div id="project-details-container" class="@(isDetailsActive ? "active" : "")">
         @if (selectedProject != null)
         {
             <button id="back-btn" @onclick="CloseDetails">
@@ -50,7 +50,15 @@
 
             <div id="project-details">
                 <header>
-                    <h3>@selectedProject.Title</h3>
+                    <div id="project-title-and-link">
+                        <h3>@selectedProject.Title</h3>
+
+                        @if (!string.IsNullOrEmpty(selectedProject.Url))
+                        {
+                            <a href="@selectedProject.Url" target="_blank" >@selectedProject.Url</a>
+                        }
+                    </div>
+
                     <p>@selectedProject.Description</p>
                     
                     <div id="project-details-skills">
@@ -59,27 +67,26 @@
                             <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
                         }
                     </div>
-
-                    @if (!string.IsNullOrEmpty(selectedProject.Url))
-                    {
-                        <a href="@selectedProject.Url" target="_blank" >@selectedProject.Url</a>
-                    }
-
                 </header>
 
-                <div id="project-details-description">                    
-                    @foreach (ProjectDetail detail in selectedProject.Details)
+                <div id="project-details-description">
+                    <ul>
+                        @foreach (ProjectDetail detail in selectedProject.Details)
+                        {
+                            <li>@detail.Description</li>
+                        }
+                    </ul>
+
+                    @if (selectedProject.Screenshots.Any())
                     {
-                        <p>@detail.Description</p>
+                        <aside>
+                            @foreach (ProjectScreenshot screenshot in selectedProject.Screenshots)
+                            {
+                                <img alt="screenshot-@screenshot.DisplayOrder" src="@screenshot.Url"/>
+                            }
+                        </aside>
                     }
                 </div>
-
-                <aside>
-                    @foreach (ProjectScreenshot screenshot in selectedProject.Screenshots)
-                    {
-                        <img alt="screenshot-@screenshot.DisplayOrder" src="@screenshot.Url"/>
-                    }
-                </aside>
             </div>
         }
     </div>
@@ -88,7 +95,9 @@
 @code {
     private List<Project>? projects;
     private Project? selectedProject;
+    private Project? queuedProject;
     private bool fetchError = false;
+    private bool isDetailsActive = false;
 
     // Fetch the projects upon loading 
     protected override async Task OnInitializedAsync()
@@ -128,12 +137,38 @@
     // Select the project when the card is clicked on
     private void ShowProjectDetails(Project project)
     {
-        selectedProject = project;
+        // The previous project has been cleared
+        if (selectedProject == null)
+        {
+            selectedProject = project;
+            isDetailsActive = true;
+        }
+        // The previous project is still sliding out
+        else
+        {
+            // Queue the clicked project
+            queuedProject = project;
+        }
+
     }
 
     // Close the details view
-    private void CloseDetails()
-    {
+    private async Task CloseDetails()
+    {   
+        // Trigger panel slide out transition
+        isDetailsActive = false;
+
+        // CSS transition
+        await Task.Delay(400);
+
+        // Clear the project
         selectedProject = null;
+
+        // Display the queued project if one has been clicked
+        if (queuedProject != null)
+        {
+            ShowProjectDetails(queuedProject);
+            queuedProject = null;
+        }
     }
 }

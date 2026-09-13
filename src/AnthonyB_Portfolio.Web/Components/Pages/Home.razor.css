@@ -40,14 +40,17 @@
     font-weight: 600;
     text-decoration: none;
     border-radius: 12px;
-    transition: all 0.1s;
     border: 2px solid var(--accent-primary);
     background: transparent;
     color: var(--accent-primary);
+    transition: 
+        background-color 0.1s,
+        border-color 0.1s,
+        color 0.1s;
 }
 
 #presentation nav a:hover {
-    background: var(--accent-primary);
+    background-color: var(--accent-primary);
     border-color: var(--accent-primary);
-    color: #ffffff;
+    color: var(--accent-text);
 }

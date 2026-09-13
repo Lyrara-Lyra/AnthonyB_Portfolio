@@ -147,7 +147,7 @@ public static class SeedData
                 new ProjectDetail { Description = "Conception du schéma de base de données avec méthodologie MERISE", DisplayOrder = 2 },
                 new ProjectDetail { Description = "Refonte totale avec intégration de reCAPTCHA v3", DisplayOrder = 3 },
                 new ProjectDetail { Description = "Traduction complète du site en anglais", DisplayOrder = 4 },
-                new ProjectDetail { Description = "Nouvelle refonte en cours de développement (Été 2026)", DisplayOrder = 5 }
+                new ProjectDetail { Description = "Nouvelle refonte en cours de développement (Prévu saison 2027)", DisplayOrder = 5 }
             }
         };
 
@@ -383,8 +383,8 @@ public static class SeedData
             Title = "Première année IFSI",
             Organization = "Institut de Formation en Soins Infirmiers",
             Location = "Villeneuve-sur-Lot, France",
-            StartTime = new DateTime(2010, 9, 1),
-            EndDate = new DateTime(2011, 7, 31),
+            StartTime = new DateTime(2017, 9, 1),
+            EndDate = new DateTime(2018, 7, 31),
             Summary = "Première année complète en Institut de Formation en Soins Infirmiers. Développement du relationnel avec les patients basé sur l'empathie, le respect et le non-jugement. Travail d'équipe et d'assistance au sein d'environnements à forte pression.",
             Responsibilities = new List<Responsibility>
             {
