@@ -3,15 +3,27 @@
 @implements IDisposable
 
 <div id="main-layout" data-theme="@ThemeService.CurrentTheme">
+    <button id="sidebar-toggle" @onclick="ToggleSidebar">
+        ☰
+    </button>
+    
     <aside>
         <Sidebar />
     </aside>
+
     <main>
         @Body
     </main>
 </div>
 
 @code {
+    private bool _isSidebarOpen = false;
+
+    private void ToggleSidebar()
+    {
+        _isSidebarOpen = !_isSidebarOpen;
+    }
+
     // Subcribes to theme changes when loaded
     protected override void OnInitialized()
     {

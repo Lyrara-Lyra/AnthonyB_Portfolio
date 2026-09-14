@@ -260,13 +260,13 @@ public static class SeedData
             },
             Skills = new List<ExperienceSkill> 
             { 
-                new ExperienceSkill { Skill = csharp }, 
-                new ExperienceSkill { Skill = dotnetCore }, 
-                new ExperienceSkill { Skill = dotnetFramework }, 
-                new ExperienceSkill { Skill = wpf }, 
-                new ExperienceSkill { Skill = bootstrap }, 
-                new ExperienceSkill { Skill = sqlServer }, 
-                new ExperienceSkill { Skill = oracle } 
+                new ExperienceSkill { Skill = csharp, DisplayOrder = 1 }, 
+                new ExperienceSkill { Skill = dotnetCore, DisplayOrder = 2 }, 
+                new ExperienceSkill { Skill = dotnetFramework, DisplayOrder = 3 }, 
+                new ExperienceSkill { Skill = wpf, DisplayOrder = 4 }, 
+                new ExperienceSkill { Skill = bootstrap, DisplayOrder = 5 }, 
+                new ExperienceSkill { Skill = sqlServer, DisplayOrder = 6 }, 
+                new ExperienceSkill { Skill = oracle, DisplayOrder = 7 } 
             }
         };
 
@@ -290,7 +290,7 @@ public static class SeedData
             },
             Skills = new List<ExperienceSkill> 
             { 
-                new ExperienceSkill { Skill = english } 
+                new ExperienceSkill { Skill = english, DisplayOrder = 1 } 
             }
         };
 
@@ -329,9 +329,9 @@ public static class SeedData
             },
             Skills = new List<ExperienceSkill> 
             { 
-                new ExperienceSkill { Skill = php }, 
-                new ExperienceSkill { Skill = symfony }, 
-                new ExperienceSkill { Skill = html } 
+                new ExperienceSkill { Skill = php, DisplayOrder = 1 }, 
+                new ExperienceSkill { Skill = symfony, DisplayOrder = 2 }, 
+                new ExperienceSkill { Skill = html, DisplayOrder = 3 } 
             }
         };
 
@@ -353,9 +353,9 @@ public static class SeedData
             },
             Skills = new List<ExperienceSkill> 
             { 
-                new ExperienceSkill { Skill = php }, 
-                new ExperienceSkill { Skill = html }, 
-                new ExperienceSkill { Skill = javascript } 
+                new ExperienceSkill { Skill = php, DisplayOrder = 1 }, 
+                new ExperienceSkill { Skill = html, DisplayOrder = 2 }, 
+                new ExperienceSkill { Skill = javascript, DisplayOrder = 3 } 
             }
         };
 
@@ -421,15 +421,15 @@ public static class SeedData
             },
             Skills = new List<ExperienceSkill> 
             { 
-                new ExperienceSkill { Skill = csharp }, 
-                new ExperienceSkill { Skill = dotnetCore }, 
-                new ExperienceSkill { Skill = dotnetFramework }, 
-                new ExperienceSkill { Skill = entityFramework }, 
-                new ExperienceSkill { Skill = sqlServer }, 
-                new ExperienceSkill { Skill = wpf }, 
-                new ExperienceSkill { Skill = angular }, 
-                new ExperienceSkill { Skill = agile }, 
-                new ExperienceSkill { Skill = cycleEnV }
+                new ExperienceSkill { Skill = csharp, DisplayOrder = 1 }, 
+                new ExperienceSkill { Skill = dotnetCore, DisplayOrder = 2 }, 
+                new ExperienceSkill { Skill = dotnetFramework, DisplayOrder = 3 }, 
+                new ExperienceSkill { Skill = entityFramework, DisplayOrder = 4 }, 
+                new ExperienceSkill { Skill = sqlServer, DisplayOrder = 5 }, 
+                new ExperienceSkill { Skill = wpf, DisplayOrder = 6 }, 
+                new ExperienceSkill { Skill = angular, DisplayOrder = 7 }, 
+                new ExperienceSkill { Skill = agile, DisplayOrder = 8 }, 
+                new ExperienceSkill { Skill = cycleEnV, DisplayOrder = 9 }
             }
         };
 
@@ -453,12 +453,12 @@ public static class SeedData
             },
             Skills = new List<ExperienceSkill> 
             { 
-                new ExperienceSkill { Skill = javascript }, 
-                new ExperienceSkill { Skill = react }, 
-                new ExperienceSkill { Skill = nodejs }, 
-                new ExperienceSkill { Skill = express }, 
-                new ExperienceSkill { Skill = mongodb }, 
-                new ExperienceSkill { Skill = html } 
+                new ExperienceSkill { Skill = javascript, DisplayOrder = 1 }, 
+                new ExperienceSkill { Skill = react, DisplayOrder = 2 }, 
+                new ExperienceSkill { Skill = nodejs, DisplayOrder = 3 }, 
+                new ExperienceSkill { Skill = express, DisplayOrder = 4 }, 
+                new ExperienceSkill { Skill = mongodb, DisplayOrder = 5 }, 
+                new ExperienceSkill { Skill = html, DisplayOrder = 6 } 
             }
         };
 
@@ -481,10 +481,10 @@ public static class SeedData
             },
             Skills = new List<ExperienceSkill> 
             { 
-                new ExperienceSkill { Skill = uml }, 
-                new ExperienceSkill { Skill = php }, 
-                new ExperienceSkill { Skill = html }, 
-                new ExperienceSkill { Skill = javascript } 
+                new ExperienceSkill { Skill = uml, DisplayOrder = 1 }, 
+                new ExperienceSkill { Skill = php, DisplayOrder = 2 }, 
+                new ExperienceSkill { Skill = html, DisplayOrder = 3 }, 
+                new ExperienceSkill { Skill = javascript, DisplayOrder = 4 } 
             }
         };
 

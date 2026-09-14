@@ -1,0 +1,31 @@
+<p class="current-status @GetStatusCssClass()">
+    @GetStatusText()
+</p>
+
+@code {
+    public enum JobSearchState
+    {
+        ActivelyLooking,
+        OpenToOpportunities,
+        NotListening
+    }
+
+    [Parameter]
+    public JobSearchState Status { get; set; } = JobSearchState.ActivelyLooking;
+
+    private string GetStatusText() => Status switch
+    {
+        JobSearchState.ActivelyLooking => "En recherche active",
+        JobSearchState.OpenToOpportunities => "À l'écoute d'opportunités",
+        JobSearchState.NotListening => "Actuellement occupé",
+        _ => string.Empty
+    };
+
+    private string GetStatusCssClass() => Status switch
+    {
+        JobSearchState.ActivelyLooking => "status-active",
+        JobSearchState.OpenToOpportunities => "status-open",
+        JobSearchState.NotListening => "status-closed",
+        _ => string.Empty
+    };
+}

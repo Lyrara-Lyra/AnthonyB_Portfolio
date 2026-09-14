@@ -30,3 +30,8 @@
     overflow: hidden;
     padding: 20px 25px;
 }
+
+/* --- Mobile design --- */
+#sidebar-toggle {
+    display: none;
+}

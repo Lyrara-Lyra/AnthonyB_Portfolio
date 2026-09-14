@@ -1,0 +1,27 @@
+/* --- Job status indicator --- */
+.current-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: bold;
+    margin: 0;
+    color: var(--status-color);
+
+    --status-color: var(--accent-primary);
+}
+
+.current-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--status-color);
+    box-shadow: 0 0 8px var(--status-color);
+}
+
+.status-active { --status-color: var(--accent-primary); }
+.status-open { --status-color: var(--accent-primary); }
+.status-closed { --status-color: var(--text-muted); }

@@ -29,26 +29,6 @@ header h2 {
     padding: 1px 0 3px 15px;
 }
 
-#current-status {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 11px;
-    color: var(--accent-primary);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    font-weight: bold;
-}
-
-#current-status::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-primary);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--accent-primary);
-}
-
 /* --- Main Navigation --- */
 #sidebar > nav {
     user-select: none;
