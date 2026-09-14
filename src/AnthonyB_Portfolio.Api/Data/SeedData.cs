@@ -320,6 +320,7 @@ public static class SeedData
             StartTime = new DateTime(2012, 10, 1),
             EndDate = new DateTime(2012, 11, 30),
             Summary = "Développement et amélioration des applications internes de l'entreprise (HTML, CSS, PHP, Symfony).",
+            IsVisible = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Développement et amélioration des applications internes de l'entreprise", DisplayOrder = 1 }
@@ -342,6 +343,7 @@ public static class SeedData
             StartTime = new DateTime(2011, 1, 1),
             EndDate = new DateTime(2011, 3, 31),
             Summary = "Développement d'un site e-commerce complet avec partie utilisateur et back-office administrateur dans le cadre du stage de 2ème année de BTS.",
+            IsVisible = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Développement de la partie utilisateur : recherche de produits, panier, paiement PayPal, création de compte avec historique", DisplayOrder = 1 },
@@ -365,7 +367,6 @@ public static class SeedData
             StartTime = new DateTime(2010, 4, 1),
             EndDate = new DateTime(2010, 6, 30),
             Summary = "Dépannage des matériels informatiques et serveurs, formation des utilisateurs et mise en place de nouveaux postes dans le cadre du stage de 1ère année de BTS.",
-            IsVisible = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Dépannage des divers matériels, postes informatiques et serveurs sur les différents sites", DisplayOrder = 1 },

@@ -36,21 +36,9 @@
 
 /* --- Buttons --- */
 #presentation nav a {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
     padding: 14px 28px;
     font-weight: 600;
     text-decoration: none;
-    border-radius: 12px;
-    border: 2px solid var(--accent-primary);
-    background: transparent;
-    color: var(--accent-primary);
-    transition: 
-        background-color 0.1s,
-        border-color 0.1s,
-        color 0.1s;
-}
-
-#presentation nav a:hover {
-    background-color: var(--accent-primary);
-    border-color: var(--accent-primary);
-    color: var(--accent-text);
 }

@@ -5,6 +5,8 @@
 
 @page "/projets"
 
+<PageTitle>Projets Notables @SiteSettings.TitleSuffix</PageTitle>
+
 <div id="projects-page">
     <div id="projects-grid-container" class="@(isDetailsActive ? "shifted" : "")">
         <h2>Projets Notables</h2>
@@ -13,7 +15,7 @@
             <div id="projects-grid">
                 @foreach (Project project in projects)
                 {
-                    <article @onclick="() => ShowProjectDetails(project)">
+                    <article class="hover-button" @onclick="() => ShowProjectDetails(project)">
                         <div class="project-grid-descr">
                             <h3>@project.Title</h3>
                             <p>@project.Description</p>

@@ -1,3 +1,4 @@
+using System.Globalization;
 using AnthonyB_Portfolio.Web.Components;
 using AnthonyB_Portfolio.Web.Services;
 
@@ -15,6 +16,11 @@ builder.Services.AddRazorComponents()
 
 // Add other services
 builder.Services.AddScoped<ThemeService>();
+
+// Locale
+var frCulture = new CultureInfo("fr-FR");
+CultureInfo.DefaultThreadCurrentCulture = frCulture;
+CultureInfo.DefaultThreadCurrentUICulture = frCulture;
 
 var app = builder.Build();
 

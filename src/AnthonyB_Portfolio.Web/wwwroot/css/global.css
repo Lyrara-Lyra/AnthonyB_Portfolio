@@ -40,6 +40,34 @@
         transform 0.5s ease !important;
 }
 
+:root.theme-change *::before {
+    transition: 
+        background-color 0.5s ease, 
+        color 0.5s ease, 
+        border-color 0.5s ease, 
+        box-shadow 0.5s ease,
+        transform 0.5s ease !important;
+}
+
+.hover-button {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-panel);
+    border-radius: 10px;
+    cursor: pointer;
+    transition:
+        box-shadow 0.2s,
+        transform 0.2s,
+        border 0.2s;
+}
+
+.hover-button:hover,
+.hover-button.active,
+.active .hover-button {
+    border: 1px solid var(--accent-primary);
+    transform: translate(4px, -4px);
+    box-shadow: -4px 4px 0 var(--accent-primary);
+}
+
 /* --- Core layout --- */
 * {
     margin: 0;
@@ -51,4 +79,8 @@ body {
     display: flex;
     height: 100vh;
     width: 100vw;
+}
+
+ul li::marker {
+    color: var(--accent-primary);
 }
