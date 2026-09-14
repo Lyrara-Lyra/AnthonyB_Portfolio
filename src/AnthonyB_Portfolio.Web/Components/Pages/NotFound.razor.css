@@ -1,0 +1,18 @@
+#page-not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-not-found p {
+    margin: 0 0 20px;
+}
+
+#page-not-found a {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    padding: 14px 28px;
+    font-weight: 600;
+    text-decoration: none;
+}

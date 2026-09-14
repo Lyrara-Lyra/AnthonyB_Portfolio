@@ -9,7 +9,7 @@
 
 <div id="projects-page">
     <div id="projects-grid-container" class="@(isDetailsActive ? "shifted" : "")">
-        <h2>Projets Notables</h2>
+        <MainTitle>Projets Notables</MainTitle>
         @if (projects != null && projects.Any())
         {
             <div id="projects-grid">
@@ -39,7 +39,9 @@
         }
         else
         {
-            <p>Chargement des projets...</p>
+            <LoadingMessage>
+                Chargement des projets...
+            </LoadingMessage>
         }
     </div>
 

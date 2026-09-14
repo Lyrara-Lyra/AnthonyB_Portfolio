@@ -1,8 +1,11 @@
 ﻿@page "/not-found"
+@using AnthonyB_Portfolio.Web.Components.Shared
 
 <PageTitle>Page introuvable @SiteSettings.TitleSuffix</PageTitle>
 
 <div id='page-not-found'>
-    <h2>Page introuvable</h2>
-    <p>La page spécifiée n'existe pas. <NavLink href="">Retour à la page d'accueil</NavLink></p>
+    <MainTitle>Page introuvable</MainTitle>
+    <a class="hover-button" href="">
+        Retour à la page d'accueil
+    </a>
 </div>

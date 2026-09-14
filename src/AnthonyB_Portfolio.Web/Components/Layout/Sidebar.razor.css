@@ -51,6 +51,7 @@ header h2 {
 
 /* --- Main Navigation --- */
 #sidebar > nav {
+    user-select: none;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -131,6 +132,7 @@ header h2 {
 }
 
 #links a {
+    user-select: none;
     background-color: var(--accent-bg);
     color: var(--accent-primary);
     padding: 8px 18px;
@@ -150,12 +152,13 @@ header h2 {
 
 /* --- Theme toggle button --- */
 button {
+    user-select: none;
     width: auto;
     margin: 0 50px;
-    padding: 8px 0;
+    padding: 10px 0;
     background-color: var(--accent-bg);
     color: var(--accent-primary);
-    border: 2px solid var(--accent-primary);
+    border: 0px solid var(--accent-primary);
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
@@ -186,4 +189,9 @@ button:hover {
     align-items: center;
     justify-content: center;
     gap: 8px;
+}
+
+#theme-slider span {
+    display: inline-block;
+    width: 15px;
 }

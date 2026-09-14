@@ -8,20 +8,12 @@
     padding: 0 25px;
 }
 
-#experiences-page h2 {
-    text-align: center;
-    color: var(--accent-primary);
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin: 5px 0 25px;
-}
-
 /* --- Timeline Layout --- */
 #experiences-timeline {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
     padding-left: 35px;
 }
 
@@ -33,7 +25,8 @@
     left: 8px;
     width: 3px;
     z-index: 1;
-    background: linear-gradient(to bottom, transparent 0%, var(--border-panel) 15px, var(--border-panel) 92%, transparent 100%);
+    background: var(--border-panel);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15px, black 92%, transparent 100%);
 }
 
 #experiences-timeline article {
@@ -72,7 +65,7 @@ article.active .timeline-dot {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 15px;
 }
 
@@ -99,6 +92,11 @@ article.active .timeline-dot {
 }
 
 /* --- Experience Details --- */
+article.active .hover-button {
+    cursor: auto;
+    user-select: text;
+}
+
 .experience-details-container {
     display: grid;
     grid-template-rows: 0fr;

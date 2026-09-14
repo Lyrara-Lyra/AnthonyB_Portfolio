@@ -54,6 +54,7 @@
     border: 1px solid var(--border-panel);
     border-radius: 10px;
     cursor: pointer;
+    user-select: none;
     transition:
         box-shadow 0.2s,
         transform 0.2s,

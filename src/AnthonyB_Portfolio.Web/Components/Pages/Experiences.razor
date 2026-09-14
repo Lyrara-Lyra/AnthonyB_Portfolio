@@ -7,7 +7,7 @@
 <PageTitle>Parcours Professionnel @SiteSettings.TitleSuffix</PageTitle>
 
 <div id="experiences-page">
-    <h2>Parcours Professionnel</h2>
+    <MainTitle>Parcours Professionnel</MainTitle>
 
     @if (experiences != null && experiences.Any())
     {
@@ -16,7 +16,7 @@
             {
                 bool isExpanded = selectedExp == exp;
 
-                <article class="@(isExpanded ? "active" : "")" @onclick="() => ToggleExpand(exp)">
+                <article class="@(isExpanded ? "active" : "")" @onclick="() => Expand(exp)">
                     <div class="timeline-dot"></div>
                     
                     <div class="hover-button experience">
@@ -57,7 +57,9 @@
     }
     else
     {
-        <p>Chargement des expériences...</p>
+        <LoadingMessage>
+            Chargement des expériences...
+        </LoadingMessage>
     }
 </div>
 
@@ -102,9 +104,9 @@
         }
     }
 
-    // Toggle the expanded view when clicking on an experience
-    private void ToggleExpand(Experience exp)
+    // Expand the experience
+    private void Expand(Experience exp)
     {
-        selectedExp = selectedExp == exp ? null : exp;
+        selectedExp = exp;
     }
 }

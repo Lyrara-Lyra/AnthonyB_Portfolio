@@ -89,7 +89,7 @@ public static class SeedData
         var portfolioWebsite = new Project
         {
             Title = "Portfolio en ligne",
-            Description = "Développement d'un portfolio web moderne pour présenter mon parcours professionnel, mes compétences techniques et mes projets.",
+            Description = "Développement d'un portfolio web moderne pour présenter mon parcours professionnel et mes projets notables.",
             IsVisible = true,
             Skills = new List<ProjectSkill>
             {
@@ -97,13 +97,16 @@ public static class SeedData
                 new ProjectSkill { Skill = dotnetCore, DisplayOrder = 2, IsHighlighted = true },
                 new ProjectSkill { Skill = blazor, DisplayOrder = 3, IsHighlighted = true },
                 new ProjectSkill { Skill = entityFrameworkCore, DisplayOrder = 4 },
-                new ProjectSkill { Skill = sqlLite, DisplayOrder = 5}
+                new ProjectSkill { Skill = sqlLite, DisplayOrder = 5 },
+                new ProjectSkill { Skill = git, DisplayOrder = 6 }
             },
             Details = new List<ProjectDetail>
             {
                 new ProjectDetail { Description = "Développement full-stack avec architecture séparée (API + Frontend)", DisplayOrder = 1 },
                 new ProjectDetail { Description = "Base de données SQLite avec Entity Framework Core", DisplayOrder = 2 },
-                new ProjectDetail { Description = "Design responsive et interface utilisateur intuitive", DisplayOrder = 3 }
+                new ProjectDetail { Description = "Design responsive et interface utilisateur intuitive", DisplayOrder = 3 },
+                new ProjectDetail { Description = "Utilisation des outils GitHub pour la sauvegarde", DisplayOrder = 4 },
+                new ProjectDetail { Description = "Mise en ligne via Microsoft Azure", DisplayOrder = 5 }
             }
         };
 
@@ -221,18 +224,17 @@ public static class SeedData
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Gestion complète d'une auto-entreprise : plannings, négociation avec sponsors", DisplayOrder = 1 },
-                new Responsibility { Description = "Animation d'une chaîne YouTube anglophone (>80 000 abonnés) à temps plein", DisplayOrder = 2 },
+                new Responsibility { Description = "Animation d'une chaîne YouTube anglophone (> 80 000 abonnés) à temps plein", DisplayOrder = 2 },
                 new Responsibility { Description = "Vulgarisation de systèmes complexes via scripts et supports visuels pour un but ludique", DisplayOrder = 3 },
                 new Responsibility { Description = "Développement et maintenance du site web bilingue lyra-made-a.website", DisplayOrder = 4 }
             },
             Skills = new List<ExperienceSkill> 
             { 
-                new ExperienceSkill { Skill = php }, 
-                new ExperienceSkill { Skill = javascript }, 
-                new ExperienceSkill { Skill = react }, 
-                new ExperienceSkill { Skill = html }, 
-                new ExperienceSkill { Skill = mariadb }, 
-                new ExperienceSkill { Skill = english } 
+                new ExperienceSkill { Skill = english, DisplayOrder = 1 },
+                new ExperienceSkill { Skill = php, DisplayOrder = 2 }, 
+                new ExperienceSkill { Skill = javascript, DisplayOrder = 3 }, 
+                new ExperienceSkill { Skill = html, DisplayOrder = 4 }, 
+                new ExperienceSkill { Skill = mariadb, DisplayOrder = 5 } 
             }
         };
 
@@ -451,11 +453,11 @@ public static class SeedData
             },
             Skills = new List<ExperienceSkill> 
             { 
+                new ExperienceSkill { Skill = javascript }, 
                 new ExperienceSkill { Skill = react }, 
                 new ExperienceSkill { Skill = nodejs }, 
                 new ExperienceSkill { Skill = express }, 
                 new ExperienceSkill { Skill = mongodb }, 
-                new ExperienceSkill { Skill = javascript }, 
                 new ExperienceSkill { Skill = html } 
             }
         };
