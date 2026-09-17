@@ -3,18 +3,57 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+// =============================================
+// SERVICE REGISTRATION
+// =============================================
+
+// Use OpenAPI for the API endpoints
 builder.Services.AddOpenApi();
 
-// Register DbContext with SQLite
+// Register the Entity Framework DbContext with SQLite
 builder.Services.AddDbContext<PortfolioDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+// Configure Cross-Origin Resource Sharing (CORS)
+builder.Services.AddCors(options =>
+{
+    // Production: Restricts API to the specified domain
+    options.AddPolicy("ProductionCors", corsBuilder => 
+        corsBuilder.WithOrigins("https://anthony-b.fr")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod());
+                   
+    // Development: Allows requests from any origin
+    options.AddPolicy("DevelopmentCors", corsBuilder => 
+        corsBuilder.AllowAnyOrigin()
+                   .AllowAnyHeader()
+                   .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
-// Seed the database
+// =============================================
+// MIDDLEWARE PIPELINE
+// =============================================
+
+// Apply the appropriate CORS policy based on the environment
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors("DevelopmentCors");
+    
+    // Expose the OpenAPI endpoint only in development
+    app.MapOpenApi(); 
+}
+else
+{
+    app.UseCors("ProductionCors");
+}
+
+// Redirect incoming HTTP requests to secure HTTPS 
+app.UseHttpsRedirection();
+
+// Seed the database during startup 
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -28,14 +67,6 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "An error occurred seeding the database.");
     }
 }
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
-app.UseHttpsRedirection();
 
 // =============================================
 // API ENDPOINTS

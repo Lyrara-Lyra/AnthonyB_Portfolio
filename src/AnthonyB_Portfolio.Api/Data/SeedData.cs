@@ -1,5 +1,4 @@
 using AnthonyB_Portfolio.Core.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace AnthonyB_Portfolio.Api.Data;
 
@@ -9,14 +8,11 @@ public static class SeedData
     {
         using var context = serviceProvider.GetRequiredService<PortfolioDbContext>();
 
-        // Clear existing data
-        context.Categories.RemoveRange(context.Categories);
-        context.Skills.RemoveRange(context.Skills);
-        context.Projects.RemoveRange(context.Projects);
-        context.ProjectDetails.RemoveRange(context.ProjectDetails);
-        context.Experiences.RemoveRange(context.Experiences);
-        context.Responsibilities.RemoveRange(context.Responsibilities);
-        context.SaveChanges();
+        // Only seed data if there is none
+        if (context.Categories.Any())
+        {
+            return;
+        }
 
         // =============================================
         // CATEGORIES

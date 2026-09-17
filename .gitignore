@@ -485,3 +485,6 @@ $RECYCLE.BIN/
 # Temporary SQLite files
 *.db-shm
 *.db-wal
+
+# Images
+*.png

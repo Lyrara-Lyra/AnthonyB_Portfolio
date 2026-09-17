@@ -4,39 +4,57 @@ using AnthonyB_Portfolio.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add HttpClient for calling the Api
+// =============================================
+// SERVICE REGISTRATION
+// =============================================
+
+// Register the HttpClient use to communicate with the API 
 builder.Services.AddScoped(sp => new HttpClient
 {
-    BaseAddress = new Uri("http://localhost:5016")
+    BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"] ?? "http://localhost:5016")
 });
 
-// Add Blazor services
+// Register necessary services for Blazor components and interactive server-side rendering
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Add other services
+// Register additional used services
 builder.Services.AddScoped<ThemeService>();
 
-// Locale
+var app = builder.Build();
+
+// =============================================
+// MIDDLEWARE PIPELINE
+// =============================================
+
+// Set application culture to French (fr-FR) for formatting
 var frCulture = new CultureInfo("fr-FR");
 CultureInfo.DefaultThreadCurrentCulture = frCulture;
 CultureInfo.DefaultThreadCurrentUICulture = frCulture;
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+// When in production
 if (!app.Environment.IsDevelopment())
 {
+    // Redirect unhandled exceptions to the "/Error" route
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    
+    // Instruct browsers to only access the site via HTTPS
     app.UseHsts();
 }
+
+// Redicrect specific HTTP status codes to the "/not-found" route
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
+
+// Redirects incoming HTTP requests to secure HTTPS
 app.UseHttpsRedirection();
 
+// Adds Antiforgery middleware to prevent Cross-Site Request Forgery (CSRF) attacks
 app.UseAntiforgery();
 
+// Enables serving static files (CSS, JS, images) from the wwwroot directory
 app.MapStaticAssets();
+
+// Maps the Blazor SignalR hub and initial Razor components
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
