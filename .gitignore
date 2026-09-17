@@ -488,3 +488,9 @@ $RECYCLE.BIN/
 
 # Images
 *.png
+
+# Production solutions
+publish-api/
+publish-web/
+api.zip
+web.zip
