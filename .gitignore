@@ -481,7 +481,15 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 
-### Personal additions
+
+##
+## Personal additions
+##
+
+# Scripts
+scripts/
+*.sh
+
 # Temporary SQLite files
 *.db-shm
 *.db-wal
@@ -490,7 +498,4 @@ $RECYCLE.BIN/
 *.png
 
 # Production solutions
-publish-api/
-publish-web/
-api.zip
-web.zip
+publish/

@@ -57,8 +57,16 @@ app.UseHttpsRedirection();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+    
     try
     {
+        // Retrieve the database context
+        var context = services.GetRequiredService<PortfolioDbContext>();
+
+        // Apply pending migrations to create/update database
+        context.Database.Migrate();
+
+        // Seed the database
         SeedData.Initialize(services);
     }
     catch (Exception ex)
