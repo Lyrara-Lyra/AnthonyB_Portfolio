@@ -74,7 +74,7 @@
         try
         {
             // Fetch the experiences from the API
-            experiences = await Http.GetFromJsonAsync<List<Experience>>("api/experiences");
+            experiences = await Http.GetFromJsonAsync<List<Experience>>("experiences");
 
             // Experiences are found
             if (experiences != null)

@@ -109,7 +109,7 @@
         try 
         {
             // Fetch the projects from the API
-            projects = await Http.GetFromJsonAsync<List<Project>>("api/projects");
+            projects = await Http.GetFromJsonAsync<List<Project>>("projects");
 
             // Projects are found
             if (projects != null)

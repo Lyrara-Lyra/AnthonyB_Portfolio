@@ -80,14 +80,14 @@ using (var scope = app.Services.CreateScope())
 // API ENDPOINTS
 // =============================================
 
-app.MapGet("/api/categories", async (PortfolioDbContext context) =>
+app.MapGet("/categories", async (PortfolioDbContext context) =>
 {
     return await context.Categories
         .OrderBy(c => c.DisplayOrder)
         .ToListAsync();
 });
 
-app.MapGet("/api/skills", async (PortfolioDbContext context) =>
+app.MapGet("/skills", async (PortfolioDbContext context) =>
 {
     return await context.Skills
         .OrderBy(s => s.Category!.DisplayOrder)
@@ -95,7 +95,7 @@ app.MapGet("/api/skills", async (PortfolioDbContext context) =>
         .ToListAsync();
 });
 
-app.MapGet("/api/projects", async (PortfolioDbContext context) =>
+app.MapGet("/projects", async (PortfolioDbContext context) =>
 {
     return await context.Projects
         .Where(p => p.IsVisible)
@@ -107,7 +107,7 @@ app.MapGet("/api/projects", async (PortfolioDbContext context) =>
         .ToListAsync();
 });
 
-app.MapGet("/api/experiences", async (PortfolioDbContext context) =>
+app.MapGet("/experiences", async (PortfolioDbContext context) =>
 {
     return await context.Experiences
         .Where(e => e.IsVisible)
