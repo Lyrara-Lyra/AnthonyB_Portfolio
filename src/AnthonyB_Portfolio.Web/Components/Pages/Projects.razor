@@ -121,9 +121,6 @@
     {
         try 
         {
-            // Simulate API delay for testing
-            await Task.Delay(3000);
-
             // Fetch the projects from the API
             projects = await Http.GetFromJsonAsync<List<Project>>("projects");
 

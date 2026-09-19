@@ -92,9 +92,6 @@
     {
         try
         {
-            // Simulate API delay for testing
-            await Task.Delay(3000);
-
             // Fetch the experiences from the API
             experiences = await Http.GetFromJsonAsync<List<Experience>>("experiences");
 
