@@ -19,9 +19,10 @@ namespace AnthonyB_Portfolio.Web.Services
         // Retrives the saved theme upon load
         public async Task InitializeAsync()
         {
-            // Get the saved theme from LocalStorage
+            // Get the saved theme from local storage
             var savedTheme = await _jsRunTime.InvokeAsync<string>("localStorage.getItem", _storageLabel);
 
+            // There is a theme in local storage
             if (!string.IsNullOrEmpty(savedTheme))
             {
                 // Update the displayed theme
@@ -54,7 +55,7 @@ namespace AnthonyB_Portfolio.Web.Services
                 await _jsRunTime.InvokeVoidAsync("document.documentElement.classList.add", "theme-change");
 
                 // Theme transition time
-                await Task.Delay(500);
+                await Task.Delay(600);
             }
             // Always remove the lock at the end
             finally

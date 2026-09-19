@@ -34,10 +34,6 @@
     margin-top: 27px;
 }
 
-#presentation .extra-info {
-    color: var(--text-muted);
-}
-
 /* --- Buttons --- */
 #presentation nav a {
     border-color: var(--accent-primary);
