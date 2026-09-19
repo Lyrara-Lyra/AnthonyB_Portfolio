@@ -144,9 +144,6 @@ button {
     font-weight: bold;
     overflow: hidden;
     cursor: pointer;
-    transition: 
-        background-color 0.1s,
-        color 0.1s;
 }
 
 button:hover {
@@ -157,6 +154,8 @@ button:hover {
 #theme-slider {
     display: flex;
     width: 200%;
+    transition: 
+        transform 0.5s ease !important;
 }
 
 [data-theme="dark"] #theme-slider {

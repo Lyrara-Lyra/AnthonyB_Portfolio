@@ -15,19 +15,21 @@
             <div id="projects-grid">
                 @foreach (Project project in projects)
                 {
-                    <article class="hover-button" @onclick="() => ShowProjectDetails(project)">
-                        <div class="project-grid-descr">
-                            <h3>@project.Title</h3>
-                            <p>@project.Description</p>
-                        </div>
+                    <div class="hover-button-container">
+                        <article @onclick="() => ShowProjectDetails(project)">
+                            <div class="project-grid-descr">
+                                <h3>@project.Title</h3>
+                                <p>@project.Description</p>
+                            </div>
 
-                        <div class="project-grid-skills">
-                            @foreach (ProjectSkill skill in project.Skills)
-                            {
-                                <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
-                            }
-                        </div>
-                    </article>
+                            <div class="project-grid-skills">
+                                @foreach (ProjectSkill skill in project.Skills)
+                                {
+                                    <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
+                                }
+                            </div>
+                        </article>
+                    </div>
                 }
             </div>
         }
@@ -39,9 +41,20 @@
         }
         else
         {
-            <LoadingMessage>
-                Chargement des projets...
-            </LoadingMessage>
+            // Placeholder layout
+            <div id="projects-grid">
+                @for (int i = 1; i <= 4; i++)
+                {
+                    <div class="hover-button-container">
+                        <article class="loading-placeholder">
+                            <div class="project-grid-descr">
+                                <h3>&nbsp;</h3>
+                                <p>&nbsp;<br />&nbsp;</p>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
         }
     </div>
 
@@ -108,6 +121,9 @@
     {
         try 
         {
+            // Simulate API delay for testing
+            await Task.Delay(3000);
+
             // Fetch the projects from the API
             projects = await Http.GetFromJsonAsync<List<Project>>("projects");
 

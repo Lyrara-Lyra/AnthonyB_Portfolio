@@ -19,29 +19,31 @@
                 <article class="@(isExpanded ? "active" : "")" @onclick="() => Expand(exp)">
                     <div class="timeline-dot"></div>
                     
-                    <div class="hover-button experience">
-                        <header>
-                            <div>
-                                <h3>@exp.Title</h3>
-                                <h4>@exp.Organization</h4>
-                            </div>
-                            <span>@exp.StartTime.ToShortDateString() - @(exp.EndDate?.ToShortDateString() ?? "Présent")</span>
-                        </header>
+                    <div class="hover-button-container">
+                        <div class="experience">
+                            <header>
+                                <div>
+                                    <h3>@exp.Title</h3>
+                                    <h4>@exp.Organization</h4>
+                                </div>
+                                <span>@exp.StartTime.ToShortDateString() - @(exp.EndDate?.ToShortDateString() ?? "Présent")</span>
+                            </header>
 
-                        <div class="experience-details-container">
-                            <div class="experience-details">
-                                <ul>
-                                    @foreach (Responsibility responsibility in exp.Responsibilities)
-                                    {
-                                        <li>@responsibility.Description</li>
-                                    }
-                                </ul>
-                                <aside>
-                                    @foreach (ExperienceSkill skill in exp.Skills)
-                                    {
-                                        <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
-                                    }
-                                </aside>
+                            <div class="experience-details-container">
+                                <div class="experience-details">
+                                    <ul>
+                                        @foreach (Responsibility responsibility in exp.Responsibilities)
+                                        {
+                                            <li>@responsibility.Description</li>
+                                        }
+                                    </ul>
+                                    <aside>
+                                        @foreach (ExperienceSkill skill in exp.Skills)
+                                        {
+                                            <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
+                                        }
+                                    </aside>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -57,9 +59,26 @@
     }
     else
     {
-        <LoadingMessage>
-            Chargement des expériences...
-        </LoadingMessage>
+        // Placholder layout
+        <div id="experiences-timeline">
+            @for (int i = 1; i <= 8; i++)
+            {
+                <article class="loading-placeholder">
+                    <div class="timeline-dot"></div>
+                    
+                    <div class="hover-button-container">
+                        <div class="experience">
+                            <header>
+                                <div>
+                                    <h3>&nbsp;</h3>
+                                    <h4>&nbsp;</h4>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                </article>
+            }
+        </div>
     }
 </div>
 
@@ -73,6 +92,9 @@
     {
         try
         {
+            // Simulate API delay for testing
+            await Task.Delay(3000);
+
             // Fetch the experiences from the API
             experiences = await Http.GetFromJsonAsync<List<Experience>>("experiences");
 

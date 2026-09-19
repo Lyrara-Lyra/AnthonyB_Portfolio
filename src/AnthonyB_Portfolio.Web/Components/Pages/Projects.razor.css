@@ -3,11 +3,13 @@
     position: relative;
     display: flex;
     height: 100%;
+    width: 100%;
     overflow: hidden;
 }
 
 /* --- Projects grid --- */
 #projects-grid-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -153,4 +155,15 @@
 
 #project-details-description ul li {
     padding-left: 10px;
+}
+
+/* --- Loading placeholder --- */
+.loading-placeholder h3 {
+    background-color: var(--text-main);
+    width: 170px;
+}
+
+.loading-placeholder p {
+    background-color: var(--text-muted);
+    width: 250px;
 }

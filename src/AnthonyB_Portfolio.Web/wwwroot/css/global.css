@@ -30,43 +30,61 @@
     --backdrop: none;
 }
 
-/* --- Common variables --- */
-:root.theme-change * {
-    transition: 
-        background-color 0.5s ease, 
-        color 0.5s ease, 
-        border-color 0.5s ease, 
-        box-shadow 0.5s ease,
-        transform 0.5s ease !important;
-}
-
+/* --- Theme change transition --- */
+:root.theme-change *,
 :root.theme-change *::before {
     transition: 
         background-color 0.5s ease, 
         color 0.5s ease, 
         border-color 0.5s ease, 
-        box-shadow 0.5s ease,
-        transform 0.5s ease !important;
+        box-shadow 0.5s ease !important;
 }
 
-.hover-button {
+/* --- Hover button --- */
+.hover-button-container {
+    cursor: pointer;
+    user-select: none;
+}
+
+.hover-button-container > * {
+    display: block;
+    height: 100%;
+    width: 100%;
     background-color: var(--bg-panel);
     border: 1px solid var(--border-panel);
     border-radius: 10px;
-    cursor: pointer;
-    user-select: none;
     transition:
         box-shadow 0.2s,
         transform 0.2s,
         border 0.2s;
 }
 
-.hover-button:hover,
-.hover-button.active,
-.active .hover-button {
+.hover-button-container:hover > *,
+.hover-button-container.active > *,
+.active .hover-button-container > * {
     border: 1px solid var(--accent-primary);
     transform: translate(4px, -4px);
     box-shadow: -4px 4px 0 var(--accent-primary);
+}
+
+/* --- Loading placeholder --- */
+.loading-placeholder h3,
+.loading-placeholder h4,
+.loading-placeholder p {
+    border-radius: 6px;
+    animation: loading-pulse 3s infinite ease-in-out;
+}
+
+@keyframes loading-pulse {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.2;
+    }
 }
 
 /* --- Core layout --- */

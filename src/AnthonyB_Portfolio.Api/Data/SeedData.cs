@@ -50,6 +50,7 @@ public static class SeedData
         var react = new Skill { Name = "React", Category = frontEndCategory };
         var angular = new Skill { Name = "Angular", Category = frontEndCategory };
         var html = new Skill { Name = "HTML/CSS", Category = frontEndCategory };
+        var responsiveHtml = new Skill { Name = "Responsive HTML/CSS", Category = frontEndCategory };
         var sass = new Skill { Name = "Sass/SCSS", Category = frontEndCategory };
         var bootstrap = new Skill { Name = "Bootstrap", Category = frontEndCategory };
         var wpf = new Skill { Name = "WPF", Category = frontEndCategory };
@@ -115,7 +116,7 @@ public static class SeedData
             { 
                 new ProjectSkill { Skill = php, DisplayOrder = 1, IsHighlighted = true },
                 new ProjectSkill { Skill = mariadb, DisplayOrder = 2, IsHighlighted = true },
-                new ProjectSkill { Skill = html, DisplayOrder = 3 },
+                new ProjectSkill { Skill = responsiveHtml, DisplayOrder = 3 },
                 new ProjectSkill { Skill = javascript, DisplayOrder = 4 },
             },
             Details = new List<ProjectDetail>
@@ -137,7 +138,7 @@ public static class SeedData
                 new ProjectSkill { Skill = php, DisplayOrder = 1, IsHighlighted = true },
                 new ProjectSkill { Skill = english, DisplayOrder = 2, IsHighlighted = true },
                 new ProjectSkill { Skill = mariadb, DisplayOrder = 3 },
-                new ProjectSkill { Skill = html, DisplayOrder = 4 }, 
+                new ProjectSkill { Skill = responsiveHtml, DisplayOrder = 4 }, 
                 new ProjectSkill { Skill = javascript, DisplayOrder = 5 },
             },
             Details = new List<ProjectDetail>
@@ -162,7 +163,7 @@ public static class SeedData
                 new ProjectSkill { Skill = javascript, DisplayOrder = 2, IsHighlighted = true },
                 new ProjectSkill { Skill = english, DisplayOrder = 3, IsHighlighted = true },
                 new ProjectSkill { Skill = mariadb, DisplayOrder = 4 },
-                new ProjectSkill { Skill = html, DisplayOrder = 5 }, 
+                new ProjectSkill { Skill = responsiveHtml, DisplayOrder = 5 }, 
             },
             Details = new List<ProjectDetail>
             {
@@ -229,7 +230,7 @@ public static class SeedData
                 new ExperienceSkill { Skill = english, DisplayOrder = 1 },
                 new ExperienceSkill { Skill = php, DisplayOrder = 2 }, 
                 new ExperienceSkill { Skill = javascript, DisplayOrder = 3 }, 
-                new ExperienceSkill { Skill = html, DisplayOrder = 4 }, 
+                new ExperienceSkill { Skill = responsiveHtml, DisplayOrder = 4 }, 
                 new ExperienceSkill { Skill = mariadb, DisplayOrder = 5 } 
             }
         };

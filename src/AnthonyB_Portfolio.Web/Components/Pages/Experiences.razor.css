@@ -34,6 +34,7 @@
 }
 
 .timeline-dot {
+    pointer-events: none;
     position: absolute;
     top: 22px;
     left: -32px;
@@ -92,7 +93,7 @@ article.active .timeline-dot {
 }
 
 /* --- Experience Details --- */
-article.active .hover-button {
+article.active .hover-button-container {
     cursor: auto;
     user-select: text;
 }
@@ -144,3 +145,13 @@ article.active .experience-details {
     gap: 8px 6px;
 }
 
+/* --- Loading placeholder --- */
+.loading-placeholder h3 {
+    background-color: var(--text-main);
+    width: 250px;
+}
+
+.loading-placeholder h4 {
+    background-color: var(--accent-primary);
+    width: 100px;
+}
