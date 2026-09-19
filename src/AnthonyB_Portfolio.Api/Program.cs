@@ -80,21 +80,6 @@ using (var scope = app.Services.CreateScope())
 // API ENDPOINTS
 // =============================================
 
-app.MapGet("/categories", async (PortfolioDbContext context) =>
-{
-    return await context.Categories
-        .OrderBy(c => c.DisplayOrder)
-        .ToListAsync();
-});
-
-app.MapGet("/skills", async (PortfolioDbContext context) =>
-{
-    return await context.Skills
-        .OrderBy(s => s.Category!.DisplayOrder)
-        .Include(s => s.Category)
-        .ToListAsync();
-});
-
 app.MapGet("/projects", async (PortfolioDbContext context) =>
 {
     return await context.Projects

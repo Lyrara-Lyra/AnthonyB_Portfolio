@@ -1,7 +1,6 @@
 @using AnthonyB_Portfolio.Core.Entities
 @using AnthonyB_Portfolio.Web.Components.Shared
-@inject HttpClient Http
-@rendermode InteractiveServer
+@inject Services.PreloadService PreloadService
 
 @page "/projets"
 
@@ -122,32 +121,20 @@
         try 
         {
             // Fetch the projects from the API
-            projects = await Http.GetFromJsonAsync<List<Project>>("projects");
+            projects = await PreloadService.GetProjectsAsync();
 
-            // Projects are found
-            if (projects != null)
-            {
-                // Sort the collections
-                foreach (Project p in projects)
-                {
-                    p.Skills = p.Skills.OrderBy(s => s.DisplayOrder).ToList();
-                    p.Details = p.Details.OrderBy(d => d.DisplayOrder).ToList();
-                    p.Screenshots = p.Screenshots.OrderBy(s => s.DisplayOrder).ToList();
-                }
-            }
             // No projects found
-            else
+            if (projects == null)
             {
                 // Error fectching projects
                 fetchError = true;
             }
-
         }
         catch (Exception err)
         {
             // Error fetching projects
             fetchError = true;
-            Console.WriteLine($"Error fetch projects: {err.Message}");
+            Console.WriteLine($"Error fetching projects: {err.Message}");
         }
     }
 
@@ -176,7 +163,7 @@
         isDetailsActive = false;
 
         // CSS transition
-        await Task.Delay(400);
+        await Task.Delay(450);
 
         // Clear the project
         selectedProject = null;

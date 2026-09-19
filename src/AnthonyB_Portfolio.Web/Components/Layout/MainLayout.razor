@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject Services.PreloadService PreloadService
 @inject Services.ThemeService ThemeService
 @implements IDisposable
 
@@ -28,15 +29,18 @@
         _isSidebarOpen = !_isSidebarOpen;
     }
 
-    // Subcribes to theme changes when loaded
     protected override void OnInitialized()
     {
+        // Initialize data caching
+        PreloadService.InitializePreload();
+
+        // Subscribe to theme changes
         ThemeService.OnChange += StateHasChanged;
     }
 
-    // Unsubscribes when unloaded
     public void Dispose()
     {
+        // Unsubscribe to theme changes
         ThemeService.OnChange -= StateHasChanged;
     }
 

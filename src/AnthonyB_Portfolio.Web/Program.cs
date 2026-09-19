@@ -18,8 +18,10 @@ builder.Services.AddScoped(sp => new HttpClient
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Register additional used services
-builder.Services.AddScoped<ThemeService>();
+// Register additional services
+builder.Services
+    .AddScoped<ThemeService>()
+    .AddScoped<PreloadService>();
 
 var app = builder.Build();
 

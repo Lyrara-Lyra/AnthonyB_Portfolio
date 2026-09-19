@@ -1,6 +1,6 @@
 @using AnthonyB_Portfolio.Core.Entities
 @using AnthonyB_Portfolio.Web.Components.Shared
-@inject HttpClient Http
+@inject Services.PreloadService PreloadService
 
 @page "/parcours"
 
@@ -92,24 +92,11 @@
     {
         try
         {
-            // Fetch the experiences from the API
-            experiences = await Http.GetFromJsonAsync<List<Experience>>("experiences");
+            // Get the preloaded experiences
+            experiences = await PreloadService.GetExperiencesAsync();
 
-            // Experiences are found
-            if (experiences != null)
-            {
-                // Sort the experiences
-                experiences = experiences.OrderByDescending(e => e.StartTime).ToList();
-
-                // Sort the collections
-                foreach (Experience e in experiences)
-                {
-                    e.Responsibilities = e.Responsibilities.OrderBy(r => r.DisplayOrder).ToList();
-                    e.Skills = e.Skills.OrderBy(s => s.DisplayOrder).ToList();
-                }
-            }
             // No experiences found
-            else
+            if (experiences == null)
             {
                 // Error fetching experiences
                 fetchError = true;
@@ -119,7 +106,7 @@
         {
             // Error fetching experiences
             fetchError = true;
-            Console.WriteLine($"Error fetch experiences: {err.Message}");
+            Console.WriteLine($"Error fetching experiences: {err.Message}");
         }
     }
 
