@@ -20,6 +20,7 @@
     border-radius: 50%;
     background-color: var(--status-color);
     box-shadow: 0 0 8px var(--status-color);
+    flex-shrink: 0;
 }
 
 .status-active { --status-color: var(--accent-primary); }

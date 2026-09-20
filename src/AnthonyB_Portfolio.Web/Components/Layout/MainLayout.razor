@@ -7,9 +7,9 @@
     <link rel="icon" type="image/png" href="/favicon-@(string.IsNullOrEmpty(ThemeService.CurrentTheme) ? "light" : ThemeService.CurrentTheme).png" />
 </HeadContent>
 
-<div id="main-layout" data-theme="@ThemeService.CurrentTheme">
+<div id="main-layout" class="@(_isSidebarOpen ? "sidebar-open" : "")" data-theme="@ThemeService.CurrentTheme">
     <button id="sidebar-toggle" @onclick="ToggleSidebar">
-        ☰
+        <span>☰</span>Menu
     </button>
     
     <aside>
