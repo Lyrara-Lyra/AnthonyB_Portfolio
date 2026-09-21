@@ -8,12 +8,18 @@
 </HeadContent>
 
 <div id="main-layout" class="@(_isSidebarOpen ? "sidebar-open" : "")" data-theme="@ThemeService.CurrentTheme">
-    <button id="sidebar-toggle" @onclick="ToggleSidebar">
-        <span>☰</span>Menu
-    </button>
+    <div id="sidebar-overlay" @onclick="ToggleSidebar"></div>
     
+    <button id="sidebar-toggle-fixed" @onclick="ToggleSidebar">
+            <span class="icon">☰</span>
+    </button>
+
     <aside>
         <Sidebar />
+
+        <button id="sidebar-toggle" @onclick="ToggleSidebar">
+            <span class="icon">☰</span><span class="text">Menu</span>
+        </button>
     </aside>
 
     <main>
