@@ -26,3 +26,9 @@
 .status-active { --status-color: var(--accent-primary); }
 .status-open { --status-color: var(--accent-primary); }
 .status-closed { --status-color: var(--text-muted); }
+
+@media (max-width: 270px) {
+    .current-status::before {
+        display: none;
+    }
+}
