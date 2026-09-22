@@ -1,6 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject Services.PreloadService PreloadService
 @inject Services.ThemeService ThemeService
+@inject NavigationManager NavigationManager
 @implements IDisposable
 
 <HeadContent>
@@ -42,12 +43,18 @@
 
         // Subscribe to theme changes
         ThemeService.OnChange += StateHasChanged;
+
+        // Subscribe to routing changes
+        NavigationManager.LocationChanged += HandleLocationChanged;
     }
 
     public void Dispose()
     {
         // Unsubscribe to theme changes
         ThemeService.OnChange -= StateHasChanged;
+
+        //Unsbscribe to routing changes
+        NavigationManager.LocationChanged -= HandleLocationChanged;
     }
 
     // Loads the saved theme when first rendered
@@ -56,6 +63,17 @@
         if (firstRender)
         {
             await ThemeService.InitializeAsync();
+        }
+    }
+
+    // Triggers whenever the URL changes
+    private void HandleLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        // Close the sidebar whenever a link is clicked
+        if (_isSidebarOpen)
+        {
+            ToggleSidebar();
+            StateHasChanged();
         }
     }
 }

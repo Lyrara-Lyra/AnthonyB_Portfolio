@@ -5,3 +5,9 @@ h2 {
     font-weight: 800;
     margin: 5px 0 30px;
 }
+
+@media (max-width: 420px) {
+    h2 {
+        overflow-wrap: break-word;
+    }    
+}

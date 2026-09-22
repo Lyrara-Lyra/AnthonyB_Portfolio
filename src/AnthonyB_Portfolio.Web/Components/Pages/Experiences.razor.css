@@ -31,6 +31,7 @@
 
 #experiences-timeline article {
     position: relative;
+    overflow: hidden;
 }
 
 #experiences-timeline > article:last-child {
@@ -161,7 +162,7 @@ article.active .experience-details {
 }
 
 /* --- Responsive design --- */
-@media (max-width: 600px) {
+@media (max-width: 690px) {
     #experiences-page {
         padding-left: 4px;
     }
@@ -172,5 +173,31 @@ article.active .experience-details {
 
     .timeline-dot {
         left: -27px;
+    }
+
+    .experience header {
+        flex-direction: column;
+    }
+
+    .experience header span {
+        text-align: center;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 420px) {
+    .experience {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .experience-details ul li {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 270px) {
+    .experience * {
+        word-break: break-word;
     }
 }
