@@ -42,6 +42,8 @@
 
 /* --- Hover button --- */
 .hover-button-container {
+    padding-top: 4px;
+    padding-right: 4px;
     cursor: pointer;
     user-select: none;
 }
@@ -77,13 +79,13 @@
 
 @keyframes loading-pulse {
     0% {
-        opacity: 0;
+        opacity: 0.1;
     }
     50% {
         opacity: 0.7;
     }
     100% {
-        opacity: 0;
+        opacity: 0.1;
     }
 }
 
@@ -93,6 +95,10 @@
     padding: 0;
     box-sizing: border-box;
     scrollbar-color: var(--accent-primary) var(--accent-bg);
+}
+
+body {
+    background-color: var(--bg-app);
 }
 
 ul li::marker {

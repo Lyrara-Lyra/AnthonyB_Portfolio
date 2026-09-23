@@ -31,7 +31,6 @@
 
 #experiences-timeline article {
     position: relative;
-    overflow: hidden;
 }
 
 #experiences-timeline > article:last-child {
@@ -64,7 +63,7 @@ article.active .timeline-dot {
 
 /* --- Experience Card --- */
 .experience {
-    padding: 15px 20px;
+    padding: 11px 16px;
 }
 
 .experience header {
@@ -73,6 +72,10 @@ article.active .timeline-dot {
     align-items: flex-start;
     flex-wrap: nowrap;
     gap: 15px;
+}
+
+.experience header > div {
+    width: 100%;
 }
 
 .experience header h3 {
@@ -153,12 +156,12 @@ article.active .experience-details {
 /* --- Loading placeholder --- */
 .loading-placeholder h3 {
     background-color: var(--text-main);
-    width: 250px;
+    max-width: 250px;
 }
 
 .loading-placeholder h4 {
     background-color: var(--accent-primary);
-    width: 100px;
+    max-width: 100px;
 }
 
 /* --- Responsive design --- */
@@ -175,24 +178,26 @@ article.active .experience-details {
         left: -27px;
     }
 
+    .experience {
+        padding: 8px 13px;
+    }
+
     .experience header {
         flex-direction: column;
+        justify-content: flex-start;
     }
 
     .experience header span {
         text-align: center;
         white-space: normal;
     }
-}
 
-@media (max-width: 420px) {
-    .experience {
-        padding-left: 14px;
-        padding-right: 14px;
+    .experience-details ul {
+        padding-left: 17px;
     }
 
     .experience-details ul li {
-        padding-left: 0;
+        padding-left: 3px;
     }
 }
 

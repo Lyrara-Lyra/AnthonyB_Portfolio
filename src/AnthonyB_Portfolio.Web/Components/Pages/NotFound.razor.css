@@ -1,12 +1,11 @@
+/* --- Page not found --- */
 #page-not-found {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-}
-
-#page-not-found p {
-    margin: 0 0 20px;
+    word-break: break-word;
+    height: 100%;
 }
 
 #page-not-found a {
@@ -15,4 +14,5 @@
     padding: 14px 28px;
     font-weight: 600;
     text-decoration: none;
+    text-align: center;
 }
