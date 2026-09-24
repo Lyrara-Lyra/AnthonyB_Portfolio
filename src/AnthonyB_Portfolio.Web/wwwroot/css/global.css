@@ -40,6 +40,11 @@
         box-shadow 0.5s ease !important;
 }
 
+:root.theme-change *::marker {
+    transition: 
+        color 0.5s ease !important;
+}
+
 /* --- Hover button --- */
 .hover-button-container {
     padding-top: 4px;
@@ -97,7 +102,7 @@
     scrollbar-color: var(--accent-primary) var(--accent-bg);
 }
 
-body {
+body, html {
     background-color: var(--bg-app);
 }
 

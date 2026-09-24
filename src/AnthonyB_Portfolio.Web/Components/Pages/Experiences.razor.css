@@ -178,10 +178,6 @@ article.active .experience-details {
         left: -27px;
     }
 
-    .experience {
-        padding: 8px 13px;
-    }
-
     .experience header {
         flex-direction: column;
         justify-content: flex-start;
@@ -194,10 +190,12 @@ article.active .experience-details {
 
     .experience-details ul {
         padding-left: 17px;
+        line-height: 1.5;
     }
 
     .experience-details ul li {
         padding-left: 3px;
+        margin-bottom: 5px;
     }
 }
 

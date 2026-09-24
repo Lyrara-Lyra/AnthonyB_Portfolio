@@ -86,7 +86,7 @@ public static class SeedData
         var portfolioWebsite = new Project
         {
             Title = "Portfolio en ligne",
-            Description = "Développement d'un portfolio web moderne pour présenter mon parcours professionnel et mes projets notables.",
+            Description = "Développement d'un portfolio web moderne qui présente mon parcours professionnel et mes projets notables.",
             IsVisible = true,
             Skills = new List<ProjectSkill>
             {
@@ -145,7 +145,7 @@ public static class SeedData
             {
                 new ProjectDetail { Description = "Analyse complète des besoins clients et spécifications fonctionnelles", DisplayOrder = 1 },
                 new ProjectDetail { Description = "Conception du schéma de base de données avec méthodologie MERISE", DisplayOrder = 2 },
-                new ProjectDetail { Description = "Refonte totale avec intégration de reCAPTCHA v3", DisplayOrder = 3 },
+                new ProjectDetail { Description = "Refonte totale en 2015 avec intégration de reCAPTCHA v3", DisplayOrder = 3 },
                 new ProjectDetail { Description = "Traduction complète du site en anglais", DisplayOrder = 4 },
                 new ProjectDetail { Description = "Nouvelle refonte en cours de développement (Prévu saison 2027)", DisplayOrder = 5 }
             }

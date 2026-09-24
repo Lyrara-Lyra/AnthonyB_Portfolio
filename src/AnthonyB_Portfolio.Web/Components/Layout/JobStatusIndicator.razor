@@ -15,7 +15,7 @@
 
     private string GetStatusText() => Status switch
     {
-        JobSearchState.ActivelyLooking => "En recherche active",
+        JobSearchState.ActivelyLooking => "Disponible maintenant",
         JobSearchState.OpenToOpportunities => "À l'écoute d'opportunités",
         JobSearchState.NotListening => "Actuellement occupé",
         _ => string.Empty

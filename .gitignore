@@ -497,5 +497,8 @@ scripts/
 # Images
 *.png
 
+# CV
+*.pdf
+
 # Production solutions
 publish/

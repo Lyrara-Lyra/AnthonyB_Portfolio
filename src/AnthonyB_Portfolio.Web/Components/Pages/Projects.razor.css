@@ -212,10 +212,12 @@
 
     #project-details-description ul {
         padding-left: 20px;
+        line-height: 1.6;
     }
 
     #project-details-description ul li {
         padding-left: 6px;
+        margin-bottom: 8px;
     }
 }
 
@@ -227,7 +229,7 @@
     }
 
     #projects-grid article {
-        padding: 10px 15px;
+        padding: 12px 17px;
     }
 
     .project-grid-skills {
