@@ -61,7 +61,7 @@ public static class SeedData
         var mariadb = new Skill { Name = "MariaDB", Category = databasesCategory };
         var mongodb = new Skill { Name = "MongoDB", Category = databasesCategory };
 
-        var git = new Skill { Name = "Git", Category = toolsCategory };
+        var git = new Skill { Name = "Github", Category = toolsCategory };
         var azure = new Skill { Name = "Azure", Category = toolsCategory };
         var uml = new Skill { Name = "UML", Category = toolsCategory };
         var merise = new Skill { Name = "Merise", Category = toolsCategory };
@@ -73,7 +73,7 @@ public static class SeedData
 
         context.Skills.AddRange(
             csharp, dotnetFramework, entityFramework, dotnetCore, entityFrameworkCore, php, nodejs, express, symfony,
-            blazor, javascript, react, angular, html, sass, bootstrap, wpf,
+            blazor, javascript, react, angular, html, responsiveHtml, sass, bootstrap, wpf,
             sqlLite, sqlServer, oracle, mariadb, mongodb,
             git, azure, uml, merise, agile, cycleEnV,
             french, english
@@ -87,15 +87,17 @@ public static class SeedData
         {
             Title = "Portfolio en ligne",
             Description = "Développement d'un portfolio web moderne qui présente mon parcours professionnel et mes projets notables.",
+            Url = "https://github.com/Lyrara-Lyra/AnthonyB_Portfolio",
             IsVisible = true,
             Skills = new List<ProjectSkill>
             {
                 new ProjectSkill { Skill = csharp, DisplayOrder = 1, IsHighlighted = true },
                 new ProjectSkill { Skill = dotnetCore, DisplayOrder = 2, IsHighlighted = true },
                 new ProjectSkill { Skill = blazor, DisplayOrder = 3, IsHighlighted = true },
-                new ProjectSkill { Skill = entityFrameworkCore, DisplayOrder = 4 },
-                new ProjectSkill { Skill = sqlLite, DisplayOrder = 5 },
-                new ProjectSkill { Skill = git, DisplayOrder = 6 }
+                new ProjectSkill { Skill = responsiveHtml, DisplayOrder = 4 },
+                new ProjectSkill { Skill = entityFrameworkCore, DisplayOrder = 5 },
+                new ProjectSkill { Skill = sqlLite, DisplayOrder = 6 },
+                new ProjectSkill { Skill = git, DisplayOrder = 7 }
             },
             Details = new List<ProjectDetail>
             {
@@ -104,6 +106,33 @@ public static class SeedData
                 new ProjectDetail { Description = "Design responsive et interface utilisateur intuitive", DisplayOrder = 3 },
                 new ProjectDetail { Description = "Utilisation des outils GitHub pour la sauvegarde", DisplayOrder = 4 },
                 new ProjectDetail { Description = "Mise en ligne via Microsoft Azure", DisplayOrder = 5 }
+            },
+            Screenshots = new List<ProjectScreenshot>
+            {
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/portfolio/portfolio_desktop_light.png",
+                    Caption = "Projets Notables (Bureau, mode clair)",
+                    DisplayOrder = 1
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/portfolio/portfolio_tablet.png",
+                    Caption = "Navigation (Tablette, mode clair)",
+                    DisplayOrder = 2
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/portfolio/portfolio_desktop_dark.png",
+                    Caption = "Parcours professionnel (Bureau, mode sombre)",
+                    DisplayOrder = 3
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/portfolio/portfolio_phone.png",
+                    Caption = "Parcours professionnel (Mobile, mode sombre)",
+                    DisplayOrder = 4
+                }
             }
         };
 
@@ -116,8 +145,8 @@ public static class SeedData
             { 
                 new ProjectSkill { Skill = php, DisplayOrder = 1, IsHighlighted = true },
                 new ProjectSkill { Skill = mariadb, DisplayOrder = 2, IsHighlighted = true },
-                new ProjectSkill { Skill = responsiveHtml, DisplayOrder = 3 },
-                new ProjectSkill { Skill = javascript, DisplayOrder = 4 },
+                new ProjectSkill { Skill = javascript, DisplayOrder = 3 },
+                new ProjectSkill { Skill = responsiveHtml, DisplayOrder = 4 },
             },
             Details = new List<ProjectDetail>
             {
@@ -138,7 +167,7 @@ public static class SeedData
                 new ProjectSkill { Skill = php, DisplayOrder = 1, IsHighlighted = true },
                 new ProjectSkill { Skill = english, DisplayOrder = 2, IsHighlighted = true },
                 new ProjectSkill { Skill = mariadb, DisplayOrder = 3 },
-                new ProjectSkill { Skill = responsiveHtml, DisplayOrder = 4 }, 
+                new ProjectSkill { Skill = html, DisplayOrder = 4 }, 
                 new ProjectSkill { Skill = javascript, DisplayOrder = 5 },
             },
             Details = new List<ProjectDetail>
@@ -148,6 +177,33 @@ public static class SeedData
                 new ProjectDetail { Description = "Refonte totale en 2015 avec intégration de reCAPTCHA v3", DisplayOrder = 3 },
                 new ProjectDetail { Description = "Traduction complète du site en anglais", DisplayOrder = 4 },
                 new ProjectDetail { Description = "Nouvelle refonte en cours de développement (Prévu saison 2027)", DisplayOrder = 5 }
+            },
+            Screenshots = new List<ProjectScreenshot>
+            {
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/mimizan/mimizan_ville.png",
+                    Caption = "Présentation de Mimizan (en cours)",
+                    DisplayOrder = 1
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/mimizan/mimizan_location.png",
+                    Caption = "Location \"Les iles\" (en cours)",
+                    DisplayOrder = 2
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/mimizan/mimizan_tarifs.png",
+                    Caption = "Grilles tarifaires (en cours)",
+                    DisplayOrder = 3
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/mimizan/mimizan_contact.png",
+                    Caption = "Formulaire de contact (en cours)",
+                    DisplayOrder = 4
+                }
             }
         };
 
@@ -171,6 +227,33 @@ public static class SeedData
                 new ProjectDetail { Description = "Sauvegarde de plusieurs Pokédex en local, avec un module d'import/export et personnalisation de l'affichage", DisplayOrder = 2 },
                 new ProjectDetail { Description = "Intégration de guides interactifs pour la communauté", DisplayOrder = 3 },
                 new ProjectDetail { Description = "Gestion de bases de données complexes avec options supplémentaires", DisplayOrder = 4 },
+            },
+                        Screenshots = new List<ProjectScreenshot>
+            {
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/pkmn/pkmn_settings.png",
+                    Caption = "Pokédex personnel",
+                    DisplayOrder = 1
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/pkmn/pkmn_search.png",
+                    Caption = "Recherche de Pokémon",
+                    DisplayOrder = 2
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/pkmn/pkmn_locations.png",
+                    Caption = "Pokémon par zone",
+                    DisplayOrder = 3
+                },
+                new ProjectScreenshot
+                {
+                    Url = "/images/screenshots/pkmn/pkmn_guide.png",
+                    Caption = "Guide avec check-list",
+                    DisplayOrder = 4
+                }
             }
         };
 
@@ -200,7 +283,7 @@ public static class SeedData
             }
         };
 
-        context.Projects.AddRange(portfolioWebsite, phpFramework, locationsMimizan, lyraWebsite, moteur2d, moduleReact);
+        context.Projects.AddRange(portfolioWebsite, phpFramework, lyraWebsite, locationsMimizan, moteur2d, moduleReact);
         context.SaveChanges();
 
         // =============================================
@@ -455,7 +538,7 @@ public static class SeedData
                 new ExperienceSkill { Skill = nodejs, DisplayOrder = 3 }, 
                 new ExperienceSkill { Skill = express, DisplayOrder = 4 }, 
                 new ExperienceSkill { Skill = mongodb, DisplayOrder = 5 }, 
-                new ExperienceSkill { Skill = html, DisplayOrder = 6 } 
+                new ExperienceSkill { Skill = responsiveHtml, DisplayOrder = 6 } 
             }
         };
 

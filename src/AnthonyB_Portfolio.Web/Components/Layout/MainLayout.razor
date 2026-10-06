@@ -3,6 +3,8 @@
 @inject Services.ThemeService ThemeService
 @inject NavigationManager NavigationManager
 @implements IDisposable
+@using AnthonyB_Portfolio.Web.Components.Layout.Sidebar
+@using Microsoft.AspNetCore.Components.Sections
 
 <HeadContent>
     <link rel="icon" type="image/png" href="/favicon-@(string.IsNullOrEmpty(ThemeService.CurrentTheme) ? "light" : ThemeService.CurrentTheme).png" />
@@ -26,6 +28,8 @@
     <main>
         @Body
     </main>
+
+    <SectionOutlet SectionName="lightbox" />
 </div>
 
 @code {

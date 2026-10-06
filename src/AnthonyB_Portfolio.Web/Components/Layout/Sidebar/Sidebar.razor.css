@@ -115,7 +115,7 @@ footer {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 3px 13px;
+    gap: 3px 10px;
     margin: 18px 0 12px;
 }
 
@@ -123,7 +123,7 @@ footer {
     user-select: none;
     background-color: var(--accent-bg);
     color: var(--accent-primary);
-    padding: 8px 18px;
+    padding: 10px 20px;
     border-radius: 20px;
     text-decoration: none;
     font-size: 0.8rem;
@@ -143,7 +143,7 @@ button {
     user-select: none;
     width: auto;
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 12px 0;
     background-color: var(--accent-bg);
     color: var(--accent-primary);
     border: 0px solid var(--accent-primary);

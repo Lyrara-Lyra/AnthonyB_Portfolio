@@ -1,0 +1,85 @@
+@using System.Text.RegularExpressions
+@using AnthonyB_Portfolio.Core.Entities
+
+<div id="lightbox" class="@(IsVisible ? "open" : "")" @onclick="Close">
+    @if (Screenshots != null && Screenshots.Any())
+    {
+        <button id="close" @onclick="Close">&times;</button>
+        
+        @if (Screenshots.Count > 1)
+        {
+            <button id="prev" class="lightbox-nav" @onclick="Previous" @onclick:stopPropagation="true">&#10094;</button>
+            <button id="next" class="lightbox-nav" @onclick="Next" @onclick:stopPropagation="true">&#10095;</button>
+        }
+        
+        <figure>
+            <div id="image-scroll">
+                <img src="@Screenshots[_currentIndex].Url" @onclick:stopPropagation="true" alt="@Screenshots[_currentIndex].Caption" />
+            </div>
+
+            <figcaption @onclick:stopPropagation="true" >@FormatCaption(Screenshots[_currentIndex].Caption)</figcaption>
+        </figure>
+    }
+</div>
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public List<ProjectScreenshot>? Screenshots { get; set; }
+    [Parameter] public int InitialIndex { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private int _currentIndex;
+    private bool _wasVisible;
+
+    protected override void OnParametersSet()
+    {
+        // Sync the index only when the lightbox is first opened
+        if (IsVisible && !_wasVisible)
+        {
+            _currentIndex = InitialIndex;
+        }
+        _wasVisible = IsVisible;
+    }
+
+    // Shows the next screenshot
+    private void Next()
+    {
+        if (Screenshots != null)
+        {
+            _currentIndex = (_currentIndex + 1) % Screenshots.Count;
+        }
+    }
+
+    // Shows the previous screenshot
+    private void Previous()
+    {
+        if (Screenshots != null)
+            _currentIndex = (_currentIndex - 1 + Screenshots.Count) % Screenshots.Count;
+    }
+
+    // Close the lightbox
+    private async Task Close()
+    {
+        // A closing function has been provided
+        if (OnClose.HasDelegate)
+        {   
+            // Execute the closing function
+            await OnClose.InvokeAsync();
+        }
+    }
+
+    // Add italics to text in parenthesis in the description
+    private MarkupString FormatCaption(string? input)
+    {
+        // Ignore if the caption is empty
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            return new MarkupString(string.Empty);
+        }
+
+        // Add em tags to the text in parenthesis
+        string formattedString = Regex.Replace(input, @"\((.*?)\)", "<em>($1)</em>");
+
+        return (MarkupString)formattedString;
+    }
+}

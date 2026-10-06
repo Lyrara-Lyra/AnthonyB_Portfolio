@@ -68,7 +68,7 @@
 
 .hover-button-container:hover > *,
 .hover-button-container.active > *,
-.active .hover-button-container > * {
+.active > .hover-button-container > * {
     border: 1px solid var(--accent-primary);
     transform: translate(4px, -4px);
     box-shadow: -4px 4px 0 var(--accent-primary);

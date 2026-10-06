@@ -1,5 +1,6 @@
 @using AnthonyB_Portfolio.Core.Entities
-@using AnthonyB_Portfolio.Web.Components.Shared
+@using Microsoft.AspNetCore.Components.Sections
+
 @inject Services.PreloadService PreloadService
 
 @page "/projets"
@@ -24,7 +25,10 @@
                             <div class="project-grid-skills">
                                 @foreach (ProjectSkill skill in project.Skills)
                                 {
-                                    <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
+                                    @if (skill.IsHighlighted)
+                                    {
+                                        <SkillBadge Name="@skill.Skill.Name" IsHighlighted="@skill.IsHighlighted" />
+                                    }
                                 }
                             </div>
                         </article>
@@ -96,11 +100,26 @@
                     @if (selectedProject.Screenshots.Any())
                     {
                         <aside>
-                            @foreach (ProjectScreenshot screenshot in selectedProject.Screenshots)
-                            {
-                                <img alt="screenshot-@screenshot.DisplayOrder" src="@screenshot.Url"/>
-                            }
+                            @for (int i = 0; i < selectedProject.Screenshots.Count; i++)
+                                {
+                                    var captureIndex = i;
+                                    var screenshot = selectedProject.Screenshots[i];
+                                    
+                                    <div class="hover-button-container">
+                                        <img alt="@screenshot.Caption" 
+                                            src="@screenshot.Url" 
+                                            @onclick="() => OpenLightbox(captureIndex)" />
+                                    </div>
+                                }
                         </aside>
+
+                        <SectionContent SectionName="lightbox">
+                            <Lightbox
+                                IsVisible="@isLightboxVisible" 
+                                Screenshots="@selectedProject.Screenshots.ToList()" 
+                                InitialIndex="@activeImageIndex" 
+                                OnClose="CloseLightbox" />
+                        </SectionContent>
                     }
                 </div>
             </div>
@@ -114,6 +133,8 @@
     private Project? queuedProject;
     private bool fetchError = false;
     private bool isDetailsActive = false;
+    private bool isLightboxVisible = false;
+    private int activeImageIndex = 0;
 
     // Fetch the projects upon loading 
     protected override async Task OnInitializedAsync()
@@ -174,5 +195,18 @@
             ShowProjectDetails(queuedProject);
             queuedProject = null;
         }
+    }
+
+    // Open the lightbox with the selected image
+    private void OpenLightbox(int index)
+    {
+        activeImageIndex = index;
+        isLightboxVisible = true;
+    }
+
+    // Close the lightbox
+    private void CloseLightbox()
+    {
+        isLightboxVisible = false;
     }
 }
