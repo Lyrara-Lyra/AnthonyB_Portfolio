@@ -96,10 +96,20 @@ app.MapGet("/experiences", async (PortfolioDbContext context) =>
 {
     return await context.Experiences
         .Where(e => e.IsVisible)
-        .OrderByDescending(e => e.StartTime)
+        .OrderByDescending(e => e.StartDate)
         .Include(e => e.Responsibilities.OrderBy(r => r.DisplayOrder))
         .Include(e => e.Skills.OrderBy(es => es.DisplayOrder))
         .ThenInclude(es => es.Skill)
+        .ToListAsync();
+});
+
+app.MapGet("/cv-skills", async (PortfolioDbContext context) =>
+{
+    return await context.Categories
+        .OrderBy(c => c.DisplayOrder)
+        .Include(c => c.Skills
+            .Where(s => s.IncludeInCV)
+            .OrderBy(s => s.DisplayOrder))
         .ToListAsync();
 });
 

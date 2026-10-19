@@ -45,6 +45,9 @@ namespace AnthonyB_Portfolio.Api.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IncludeInCV")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("IsVisible")
                         .HasColumnType("INTEGER");
 
@@ -57,7 +60,7 @@ namespace AnthonyB_Portfolio.Api.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("StartTime")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Summary")
@@ -107,6 +110,9 @@ namespace AnthonyB_Portfolio.Api.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IncludeInCV")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsVisible")
                         .HasColumnType("INTEGER");
@@ -229,6 +235,12 @@ namespace AnthonyB_Portfolio.Api.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IncludeInCV")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")

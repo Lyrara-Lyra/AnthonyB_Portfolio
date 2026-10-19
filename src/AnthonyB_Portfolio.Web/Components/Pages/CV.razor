@@ -1,0 +1,209 @@
+@using AnthonyB_Portfolio.Core.Entities
+@using AnthonyB_Portfolio.Web.Components.Layout
+@inject Services.PreloadService PreloadService
+
+@page "/cv"
+@layout PrintLayout
+
+<PageTitle>CV @SiteSettings.TitleSuffix</PageTitle>
+
+<div id="cv-container">
+    <!-- Header: Contact information -->
+    <header>
+        <div id="title">
+            <div>
+                <h1>Anthony Bastien</h1>
+                <h2>Développeur C# / Web</h2>
+            </div>
+
+            <p>Disponible maintenant</p>
+        </div>
+        
+        <div id="contact">
+            <span>🏠 Colayrac-St-Cirq, 47</span>
+            <span>✉️ bastien.anthony@gmail.com</span>
+            <span>📞 06.50.10.45.33</span>
+            <span>🔗 anthony-b.fr</span>
+        </div>
+    </header>
+
+    <div id="contents">
+        <!-- Left column: Skills & Education -->
+        <aside>
+            <section id="skills">
+                <h3>Compétences</h3>
+
+                @if (categories != null && categories.Any())
+                {
+                    @foreach (Category category in categories)
+                    {
+                        <article>
+                            <h4>@category.Name</h4>
+
+                            <div class="list">
+                                @foreach (Skill skill in category.Skills)
+                                {
+                                    <span>@FormatLanguage(skill.Name)</span>
+                                }
+                            </div>
+                        </article>
+                    }
+                }
+            </section>
+
+            <section id="education">
+                <h3>Formations</h3>
+
+                @if (education != null && education.Any())
+                {
+                    @foreach (Experience edu in education)
+                    {
+                        <article>
+                            <h4>@edu.Title</h4>
+                            
+                            <p class="organization">
+                                @edu.Organization
+                                
+                                @if (!string.IsNullOrEmpty(edu.Location))
+                                {
+                                    <text> - @edu.Location</text>
+                                }
+                            </p>
+
+                            <p class="dates">
+                                @edu.StartDate.Year
+
+                                @if (edu.EndDate.HasValue && edu.EndDate.Value.Year != edu.StartDate.Year)
+                                {
+                                    <text> - @edu.EndDate.Value.Year</text> 
+                                }
+                            </p>
+
+                            <p>@edu.Summary</p>
+                        </article>
+                    }
+                }
+            </section>
+
+        </aside>
+
+        <!-- Right Column: Presentation, Experience & Projects -->
+        <div id="main-info">
+            <section id="presentation">
+                <p>
+                    Développeur C# et Web bilingue (français/anglais) fort d'une expérience d'auto-entrepreneur de 5 ans m'ayant forgé une solide rigeur organisationnelle, et une excellent capacité d'apprentissage en front et back-end. 
+                </p>
+            </section>
+
+            <section id="experience">
+                <h3>Expériences Professionnelles</h3>
+
+                @if (jobs != null && jobs.Any())
+                {
+                    @foreach (Experience job in jobs)
+                    {
+                        <article>
+                            <h4>@job.Title</h4>
+                            
+                            <p class="organization">
+                                @job.Organization
+
+                                @if (!string.IsNullOrEmpty(job.Location))
+                                {
+                                    <text> - @job.Location</text>
+                                }
+                            </p>
+
+                            <p class="dates">
+                                @job.StartDate.ToString("MMM yyyy") -
+                            
+                                @(job.EndDate?.ToString("MMM yyyy") ?? "Présent")
+                            </p>
+
+                            @if (job.Responsibilities.Any())
+                            {
+                                <ul>
+                                    @foreach (Responsibility responsibility in job.Responsibilities)
+                                    {
+                                        <li>@responsibility.Description</li>
+                                    }
+                                </ul>
+                            }
+                        </article>
+                    }
+                }
+            </section>
+
+            <section id="projects">
+                <h3>Projets Notables</h3>
+
+                @if (projects != null && projects.Any())
+                {
+                    @foreach (Project project in projects)
+                    {
+                        <article>
+                            <h4>@project.Title</h4>
+
+                            <p>@project.Description</p>
+                        </article>
+                    }
+                }
+            </section>
+
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<Category>? categories;
+    private List<Experience>? allExperiences;
+    private List<Experience>? education;
+    private List<Experience>? jobs;
+    private List<Project>? projects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Get preloaded data
+            allExperiences = await PreloadService.GetExperiencesAsync();
+            projects = await PreloadService.GetProjectsAsync();
+            categories = await PreloadService.GetCategoriesAsync();
+
+            // Filter experiences to be included and categorize them
+            if (allExperiences != null)
+            {
+                jobs = allExperiences
+                    .Where(e => e.Type == ExperienceType.Job && e.IncludeInCV)
+                    .OrderByDescending(e => e.StartDate)
+                    .ToList();
+
+                education = allExperiences
+                    .Where(e => e.Type == ExperienceType.Education && e.IncludeInCV)
+                    .OrderByDescending(e => e.StartDate)
+                    .ToList();
+            }
+
+            // Filter projects to be included
+            if (projects != null)
+            {
+                projects = projects
+                    .Where(p => p.IncludeInCV)
+                    .ToList();
+            }
+        }
+        catch (Exception err)
+        {
+            Console.WriteLine($"Error fetching CV data: {err.Message}");
+        }
+    }
+
+    // Format Language strings to be CV specific
+    private string FormatLanguage(string skillName) =>
+        skillName switch
+        {
+            "Français" => "Français - Natif",
+            "Anglais" => "Anglais - Courant",
+            _ => skillName
+        };
+}

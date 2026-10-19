@@ -15,7 +15,7 @@
 }
 
 /* --- Dark theme --- */
-[data-theme="dark"] {
+:root:has([data-theme="dark"]) {
     --bg-app: #050505;
     --bg-surface: #111111;
     --bg-panel: #1e1e1e;
@@ -28,6 +28,11 @@
     --border-panel: #333333;
     --box-shadow: 0 0 10px rgba(0, 255, 157, 0.40);
     --backdrop: none;
+}
+
+/* --- Print background --- */
+:root:has(#print-layout) {
+    --bg-app: #525659;
 }
 
 /* --- Theme change transition --- */
@@ -102,7 +107,7 @@
     scrollbar-color: var(--accent-primary) var(--accent-bg);
 }
 
-body, html {
+html {
     background-color: var(--bg-app);
 }
 

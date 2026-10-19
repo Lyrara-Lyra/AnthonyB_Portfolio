@@ -7,6 +7,7 @@ namespace AnthonyB_Portfolio.Web.Services
         public readonly HttpClient _http;
         private Task<List<Project>?> _projectsTask = Task.FromResult<List<Project>?>(null);
         private Task<List<Experience>?> _experiencesTask = Task.FromResult<List<Experience>?>(null);
+        private Task<List<Category>?> _categoriesTask = Task.FromResult<List<Category>?>(null);
 
 
         public PreloadService(HttpClient http)
@@ -19,6 +20,7 @@ namespace AnthonyB_Portfolio.Web.Services
             // Start preloading data
             GetProjectsAsync();
             GetExperiencesAsync();
+            GetCategoriesAsync();
         }
 
         public Task<List<Project>?> GetProjectsAsync()
@@ -78,7 +80,7 @@ namespace AnthonyB_Portfolio.Web.Services
             if (fetchedExperiences != null)
             {
                 // Save and sort the experiences
-                fetchedExperiences = fetchedExperiences.OrderByDescending(e => e.StartTime).ToList();
+                fetchedExperiences = fetchedExperiences.OrderByDescending(e => e.StartDate).ToList();
 
                 foreach (Experience e in fetchedExperiences)
                 {
@@ -89,6 +91,39 @@ namespace AnthonyB_Portfolio.Web.Services
 
             // Return the sorted experiences
             return fetchedExperiences;
+        }
+
+        public Task<List<Category>?> GetCategoriesAsync()
+        {
+            // The fetch is completed with no result (default)
+            if (_categoriesTask.IsCompleted && _categoriesTask.Result == null)
+            {
+                // Fetch the categories again
+                _categoriesTask = FetchCategoriesAsync();
+            }
+
+            // Return the categories or the fetching task
+            return _categoriesTask;
+        }
+
+        private async Task<List<Category>?> FetchCategoriesAsync()
+        {
+            // Fetch the categories from the API
+            var fetchedCategories = await _http.GetFromJsonAsync<List<Category>>("cv-skills");
+
+            // Categories are found
+            if (fetchedCategories != null)
+            {
+                // Sort the categories and their skills by display order
+                foreach (Category c in fetchedCategories)
+                {
+                    c.Skills = c.Skills.OrderBy(s => s.DisplayOrder).ToList();
+                }
+                fetchedCategories = fetchedCategories.OrderBy(c => c.DisplayOrder).ToList();
+            }
+
+            // Return the sorted categories
+            return fetchedCategories;
         }
     }
 }

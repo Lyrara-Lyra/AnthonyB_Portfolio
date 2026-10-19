@@ -7,6 +7,7 @@ public class Project
     public required string Description { get; set; }
     public string? Url { get; set; }
     public bool IsVisible { get; set; } = false;
+    public bool IncludeInCV { get; set; } = false;
 
     public List<ProjectSkill> Skills { get; set; } = [];
     public List<ProjectDetail> Details { get; set; } = [];

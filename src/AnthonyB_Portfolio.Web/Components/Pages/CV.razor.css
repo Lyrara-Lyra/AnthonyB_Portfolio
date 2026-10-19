@@ -1,0 +1,42 @@
+/* --- CV Layout --- */
+#cv-container {
+    font-size: 14px;
+}
+
+#contents {
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    align-items: start;
+}
+
+#contents > * {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#contents h3 {
+    text-transform: uppercase;
+    color: var(--accent-primary)
+}
+
+/* --- Header --- */
+header {
+    width: 100%;
+    background-color: var(--accent-primary);
+    color: var(--accent-text);
+    padding: 1rem 2rem;
+    border-bottom: 0.3rem solid black;
+}
+
+#contact {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* --- Left column (Skills, Education) --- */
+aside {
+    background-color: var(--accent-bg);
+}
+
+/* --- Right column (Jobs, Projects) --- */

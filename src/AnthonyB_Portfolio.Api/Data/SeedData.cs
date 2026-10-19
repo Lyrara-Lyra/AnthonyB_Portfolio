@@ -35,41 +35,232 @@ public static class SeedData
         // =============================================
         // SKILLS
         // =============================================
-        var csharp = new Skill { Name = "C#", Category = backEndCategory };
-        var dotnetFramework = new Skill { Name = ".NET Framework", Category = backEndCategory };
-        var entityFramework = new Skill { Name = "Entity Framework", Category = backEndCategory };
-        var dotnetCore = new Skill { Name = ".NET Core", Category = backEndCategory };
-        var entityFrameworkCore = new Skill { Name = "Entity Framework Core", Category = backEndCategory };
-        var php = new Skill { Name = "PHP", Category = backEndCategory };
-        var nodejs = new Skill { Name = "Node.js", Category = backEndCategory };
-        var express = new Skill { Name = "Express", Category = backEndCategory };
-        var symfony = new Skill { Name = "Symfony", Category = backEndCategory };
+        // Back-End
+        var csharp = new Skill
+        {
+            Name = "C#",
+            Category = backEndCategory,
+            DisplayOrder = 1,
+            IncludeInCV = true
+        };
+        var dotnetFramework = new Skill
+        {
+            Name = ".NET Framework",
+            Category = backEndCategory,
+            DisplayOrder = 2,
+            IncludeInCV = true
+        };
+        var entityFramework = new Skill
+        {
+            Name = "Entity Framework",
+            Category = backEndCategory,
+            DisplayOrder = 3,
+            IncludeInCV = true
+        };
+        var dotnetCore = new Skill
+        {
+            Name = ".NET Core",
+            Category = backEndCategory,
+            DisplayOrder = 4,
+            IncludeInCV = true
+        };
+        var entityFrameworkCore = new Skill
+        {
+            Name = "Entity Framework Core",
+            Category = backEndCategory,
+            DisplayOrder = 5,
+            IncludeInCV = true
+        };
+        var php = new Skill
+        {
+            Name = "PHP",
+            Category = backEndCategory,
+            DisplayOrder = 6,
+            IncludeInCV = true
+        };
+        var nodejs = new Skill
+        {
+            Name = "Node.js",
+            Category = backEndCategory,
+            DisplayOrder = 7,
+            IncludeInCV = true
+        };
+        var express = new Skill
+        {
+            Name = "Express",
+            Category = backEndCategory,
+            DisplayOrder = 8,
+            IncludeInCV = false
+        };
+        var symfony = new Skill
+        {
+            Name = "Symfony",
+            Category = backEndCategory,
+            DisplayOrder = 9,
+            IncludeInCV = true
+        };
 
-        var blazor = new Skill { Name = "Blazor", Category = frontEndCategory };
-        var javascript = new Skill { Name = "JS", Category = frontEndCategory };
-        var react = new Skill { Name = "React", Category = frontEndCategory };
-        var angular = new Skill { Name = "Angular", Category = frontEndCategory };
-        var html = new Skill { Name = "HTML/CSS", Category = frontEndCategory };
-        var responsiveHtml = new Skill { Name = "Responsive HTML/CSS", Category = frontEndCategory };
-        var sass = new Skill { Name = "Sass/SCSS", Category = frontEndCategory };
-        var bootstrap = new Skill { Name = "Bootstrap", Category = frontEndCategory };
-        var wpf = new Skill { Name = "WPF", Category = frontEndCategory };
+        // Front-End
+        var blazor = new Skill
+        {
+            Name = "Blazor",
+            Category = frontEndCategory,
+            DisplayOrder = 1,
+            IncludeInCV = true
+        };
+        var javascript = new Skill
+        {
+            Name = "JS",
+            Category = frontEndCategory,
+            DisplayOrder = 2,
+            IncludeInCV = true
+        };
+        var react = new Skill
+        {
+            Name = "React",
+            Category = frontEndCategory,
+            DisplayOrder = 3,
+            IncludeInCV = true
+        };
+        var angular = new Skill
+        {
+            Name = "Angular",
+            Category = frontEndCategory,
+            DisplayOrder = 4,
+            IncludeInCV = true
+        };
+        var html = new Skill
+        {
+            Name = "HTML/CSS",
+            Category = frontEndCategory,
+            DisplayOrder = 5,
+            IncludeInCV = false
+        };
+        var responsiveHtml = new Skill
+        {
+            Name = "Responsive HTML/CSS",
+            Category = frontEndCategory,
+            DisplayOrder = 6,
+            IncludeInCV = true
+        };
+        var sass = new Skill
+        {
+            Name = "Sass/SCSS",
+            Category = frontEndCategory,
+            DisplayOrder = 7,
+            IncludeInCV = false
+        };
+        var bootstrap = new Skill
+        {
+            Name = "Bootstrap",
+            Category = frontEndCategory,
+            DisplayOrder = 8,
+            IncludeInCV = true
+        };
+        var wpf = new Skill
+        {
+            Name = "WPF",
+            Category = frontEndCategory,
+            DisplayOrder = 9,
+            IncludeInCV = true
+        };
 
-        var sqlLite = new Skill { Name = "SQLite", Category = databasesCategory };
-        var sqlServer = new Skill { Name = "SQL Server", Category = databasesCategory };
-        var oracle = new Skill { Name = "Oracle", Category = databasesCategory };
-        var mariadb = new Skill { Name = "MariaDB", Category = databasesCategory };
-        var mongodb = new Skill { Name = "MongoDB", Category = databasesCategory };
+        // Bases de données
+        var sqlLite = new Skill
+        {
+            Name = "SQLite",
+            Category = databasesCategory,
+            DisplayOrder = 1,
+            IncludeInCV = true
+        };
+        var sqlServer = new Skill
+        {
+            Name = "SQL Server",
+            Category = databasesCategory,
+            DisplayOrder = 2,
+            IncludeInCV = true
+        };
+        var oracle = new Skill
+        {
+            Name = "Oracle",
+            Category = databasesCategory,
+            DisplayOrder = 3,
+            IncludeInCV = true
+        };
+        var mariadb = new Skill
+        {
+            Name = "MariaDB",
+            Category = databasesCategory,
+            DisplayOrder = 4,
+            IncludeInCV = true
+        };
+        var mongodb = new Skill
+        {
+            Name = "MongoDB",
+            Category = databasesCategory,
+            DisplayOrder = 5,
+            IncludeInCV = false
+        };
 
-        var git = new Skill { Name = "Github", Category = toolsCategory };
-        var azure = new Skill { Name = "Azure", Category = toolsCategory };
-        var uml = new Skill { Name = "UML", Category = toolsCategory };
-        var merise = new Skill { Name = "Merise", Category = toolsCategory };
-        var agile = new Skill { Name = "Agile", Category = toolsCategory };
-        var cycleEnV = new Skill { Name = "Cycle en V", Category = toolsCategory };
+        // Outils & Méthodes
+        var git = new Skill
+        {
+            Name = "Github",
+            Category = toolsCategory,
+            DisplayOrder = 1,
+            IncludeInCV = true
+        };
+        var azure = new Skill
+        {
+            Name = "Azure",
+            Category = toolsCategory,
+            DisplayOrder = 2,
+            IncludeInCV = true
+        };
+        var uml = new Skill
+        {
+            Name = "UML",
+            Category = toolsCategory,
+            DisplayOrder = 3,
+            IncludeInCV = true
+        };
+        var merise = new Skill
+        {
+            Name = "Merise",
+            Category = toolsCategory,
+            DisplayOrder = 4,
+            IncludeInCV = true
+        };
+        var agile = new Skill
+        {
+            Name = "Agile",
+            Category = toolsCategory,
+            DisplayOrder = 5,
+            IncludeInCV = true
+        };
+        var cycleEnV = new Skill
+        {
+            Name = "Cycle en V",
+            Category = toolsCategory,
+            DisplayOrder = 6,
+            IncludeInCV = true
+        };
 
-        var french = new Skill { Name = "Français", Category = languagesCategory };
-        var english = new Skill { Name = "Anglais", Category = languagesCategory };
+        // Langues
+        var french = new Skill
+        {
+            Name = "Français",
+            Category = languagesCategory,
+            DisplayOrder = 1,
+            IncludeInCV = true
+        };
+        var english = new Skill
+        {
+            Name = "Anglais",
+            Category = languagesCategory,
+            DisplayOrder = 2,
+            IncludeInCV = true
+        };
 
         context.Skills.AddRange(
             csharp, dotnetFramework, entityFramework, dotnetCore, entityFrameworkCore, php, nodejs, express, symfony,
@@ -89,6 +280,7 @@ public static class SeedData
             Description = "Développement d'un portfolio web moderne qui présente mon parcours professionnel et mes projets notables.",
             Url = "https://github.com/Lyrara-Lyra/AnthonyB_Portfolio",
             IsVisible = true,
+            IncludeInCV = true,
             Skills = new List<ProjectSkill>
             {
                 new ProjectSkill { Skill = csharp, DisplayOrder = 1, IsHighlighted = true },
@@ -141,6 +333,7 @@ public static class SeedData
             Title = "Framework PHP Propriétaire",
             Description = "Conception d'un framework PHP structuré pour optimiser la maintenance et le déploiement sur différents projets.",
             IsVisible = true,
+            IncludeInCV = false,
             Skills = new List<ProjectSkill> 
             { 
                 new ProjectSkill { Skill = php, DisplayOrder = 1, IsHighlighted = true },
@@ -162,6 +355,7 @@ public static class SeedData
             Description = "Création et maintenance d'un site de location : analyse des besoins, développement et hébergement.",
             Url = "https://locations-mimizan.fr",
             IsVisible = true,
+            IncludeInCV = true,
             Skills = new List<ProjectSkill> 
             { 
                 new ProjectSkill { Skill = php, DisplayOrder = 1, IsHighlighted = true },
@@ -213,6 +407,7 @@ public static class SeedData
             Description = "Site web bilingue Pokémon associé à une chaîne YouTube de plus de 80 000 abonnés. Intègre des guides interactifs et des bases de données complexes.",
             Url = "https://lyra-made-a.website",
             IsVisible = true,
+            IncludeInCV = true,
             Skills = new List<ProjectSkill> 
             { 
                 new ProjectSkill { Skill = php, DisplayOrder = 1, IsHighlighted = true },
@@ -261,6 +456,8 @@ public static class SeedData
         {
             Title = "Moteur 2D JavaScript",
             Description = "Développement d'un moteur de jeu 2D en JavaScript natif.",
+            IsVisible = false,
+            IncludeInCV = false,
             Details = new List<ProjectDetail>
             {
                 new ProjectDetail { Description = "Architecture MVC pour le moteur de jeu", DisplayOrder = 1 },
@@ -274,6 +471,8 @@ public static class SeedData
         {
             Title = "Module Interactif React",
             Description = "Création d'une interface d'entraînement de jeu en React.",
+            IsVisible = false,
+            IncludeInCV = false,
             Details = new List<ProjectDetail>
             {
                 new ProjectDetail { Description = "Interface utilisateur interactive développée en React", DisplayOrder = 1 },
@@ -297,10 +496,11 @@ public static class SeedData
             Title = "Créateur de contenu YouTube",
             Organization = "Auto-entrepreneur",
             Location = "Télétravail",
-            StartTime = new DateTime(2021, 3, 1),
+            StartDate = new DateTime(2021, 3, 1),
             EndDate = new DateTime(2026, 5, 31),
             Summary = "Gestion complète d'une auto-entreprise de création de contenu",
             IsVisible = true,
+            IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Gestion complète d'une auto-entreprise : plannings, négociation avec sponsors", DisplayOrder = 1 },
@@ -324,11 +524,12 @@ public static class SeedData
             Type = ExperienceType.Job,
             Title = "Concepteur C#",
             Organization = "Capgemini",
-            Location = "Bagnols-sur-Cèze, France",
-            StartTime = new DateTime(2020, 6, 1),
+            Location = "Bagnols-sur-Cèze",
+            StartDate = new DateTime(2020, 6, 1),
             EndDate = new DateTime(2021, 3, 31),
             Summary = "Refonte, maintenance et évolution d'applications métiers selon les spécifications clients",
             IsVisible = true,
+            IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Refonte, maintenance et évolution d'applications métiers en C#", DisplayOrder = 1 },
@@ -357,10 +558,11 @@ public static class SeedData
             Title = "Agent de Support Client",
             Organization = "5CA",
             Location = "Télétravail",
-            StartTime = new DateTime(2018, 7, 1),
+            StartDate = new DateTime(2018, 7, 1),
             EndDate = new DateTime(2018, 11, 30),
             Summary = "Support technique francophone pour les joueurs du jeu vidéo Fortnite. Proposition de promotion au poste d'Agent Senior.",
             IsVisible = true,
+            IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Support technique francophone pour les joueurs de Fortnite", DisplayOrder = 1 },
@@ -380,10 +582,12 @@ public static class SeedData
             Type = ExperienceType.Job,
             Title = "Opérateur d'attractions",
             Organization = "Walibi Sud-Ouest",
-            Location = "Roquefort, France",
-            StartTime = new DateTime(2014, 3, 1),
+            Location = "Roquefort",
+            StartDate = new DateTime(2014, 3, 1),
             EndDate = new DateTime(2014, 10, 31),
             Summary = "Gestion de la sécurité et de l'accueil du public sur les attractions.",
+            IsVisible = false,
+            IncludeInCV = false,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Gestion de la sécurité et de l'accueil du public sur les attractions", DisplayOrder = 1 },
@@ -398,11 +602,12 @@ public static class SeedData
             Type = ExperienceType.Job,
             Title = "Développeur PHP",
             Organization = "Mericq",
-            Location = "Estillac, France",
-            StartTime = new DateTime(2012, 10, 1),
+            Location = "Estillac",
+            StartDate = new DateTime(2012, 10, 1),
             EndDate = new DateTime(2012, 11, 30),
             Summary = "Développement et amélioration des applications internes de l'entreprise (HTML, CSS, PHP, Symfony).",
             IsVisible = true,
+            IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Développement et amélioration des applications internes de l'entreprise", DisplayOrder = 1 }
@@ -421,11 +626,12 @@ public static class SeedData
             Type = ExperienceType.Education,
             Title = "Stagiaire Développeur Web",
             Organization = "Chrono Informatique",
-            Location = "Agen, France",
-            StartTime = new DateTime(2011, 1, 1),
+            Location = "Agen",
+            StartDate = new DateTime(2011, 1, 1),
             EndDate = new DateTime(2011, 3, 31),
             Summary = "Développement d'un site e-commerce complet avec partie utilisateur et back-office administrateur dans le cadre du stage de 2ème année de BTS.",
             IsVisible = true,
+            IncludeInCV = false,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Développement de la partie utilisateur : recherche de produits, panier, paiement PayPal, création de compte avec historique", DisplayOrder = 1 },
@@ -445,10 +651,12 @@ public static class SeedData
             Type = ExperienceType.Education,
             Title = "Stagiaire Technicien Informatique",
             Organization = "Communauté d'Agglomération d'Agen",
-            Location = "Agen, France",
-            StartTime = new DateTime(2010, 4, 1),
+            Location = "Agen",
+            StartDate = new DateTime(2010, 4, 1),
             EndDate = new DateTime(2010, 6, 30),
             Summary = "Dépannage des matériels informatiques et serveurs, formation des utilisateurs et mise en place de nouveaux postes dans le cadre du stage de 1ère année de BTS.",
+            IsVisible = false,
+            IncludeInCV = false,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Dépannage des divers matériels, postes informatiques et serveurs sur les différents sites", DisplayOrder = 1 },
@@ -465,10 +673,12 @@ public static class SeedData
             Type = ExperienceType.Education,
             Title = "Première année IFSI",
             Organization = "Institut de Formation en Soins Infirmiers",
-            Location = "Villeneuve-sur-Lot, France",
-            StartTime = new DateTime(2017, 9, 1),
+            Location = "Villeneuve-sur-Lot",
+            StartDate = new DateTime(2017, 9, 1),
             EndDate = new DateTime(2018, 7, 31),
             Summary = "Première année complète en Institut de Formation en Soins Infirmiers. Développement du relationnel avec les patients basé sur l'empathie, le respect et le non-jugement. Travail d'équipe et d'assistance au sein d'environnements à forte pression.",
+            IsVisible = false,
+            IncludeInCV = false,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Formation théorique et pratique en soins infirmiers", DisplayOrder = 1 },
@@ -487,10 +697,11 @@ public static class SeedData
             Title = "Formation C#",
             Organization = "AJC Formation",
             Location = null,
-            StartTime = new DateTime(2019, 8, 1),
+            StartDate = new DateTime(2019, 8, 1),
             EndDate = new DateTime(2019, 11, 30),
-            Summary = "Formation intensive couvrant C#, ASP.NET Core & Framework, MVC, Entity Framework, SQL Server, WPF, Angular, Méthode Agile, Design Patterns.",
+            Summary = "Formation couvrant C#, ASP.NET Core & Framework, MVC, Entity Framework, SQL Server, WPF, Angular, Méthode Agile, Design Patterns.",
             IsVisible = true,
+            IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Apprentissage de C# et ASP.NET Core & Framework", DisplayOrder = 1 },
@@ -520,10 +731,11 @@ public static class SeedData
             Title = "Certification Full-Stack JavaScript",
             Organization = "freeCodeCamp",
             Location = null,
-            StartTime = new DateTime(2019, 6, 1),
+            StartDate = new DateTime(2019, 6, 1),
             EndDate = new DateTime(2019, 7, 31),
-            Summary = "Certification couvrant le Design Web Réactif, Algorithmes JS, React, Node.js, jQuery, D3, Express, MongoDB.",
+            Summary = "Certification couvrant le Design Web Réactif, l'algorithmie JS, React, Node.js, jQuery, D3, Express, MongoDB.",
             IsVisible = true,
+            IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Design Web Réactif et développement front-end", DisplayOrder = 1 },
@@ -549,10 +761,11 @@ public static class SeedData
             Title = "BTS Informatique de Gestion - Option Développeur d'Applications",
             Organization = "Lycée Gustave Eiffel",
             Location = "Bordeaux",
-            StartTime = new DateTime(2009, 9, 1),
+            StartDate = new DateTime(2009, 9, 1),
             EndDate = new DateTime(2011, 6, 30),
-            Summary = "BTS en gestion informatique avec spécialisation en développement logiciel. Cursus couvrant l'algorithmie, la programmation orientée objet et la modélisation de bases de données (UML, SQL).",
+            Summary = "Cursus couvrant l'algorithmie, la programmation orientée objet et la modélisation de bases de données (UML, SQL).",
             IsVisible = true,
+            IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Apprentissage de l'algorithmie avancée", DisplayOrder = 1 },
