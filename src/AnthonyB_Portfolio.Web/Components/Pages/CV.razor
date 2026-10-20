@@ -20,10 +20,10 @@
         </div>
         
         <div id="contact">
-            <span>🏠 Colayrac-St-Cirq, 47</span>
             <span>✉️ bastien.anthony@gmail.com</span>
             <span>📞 06.50.10.45.33</span>
             <span>🔗 anthony-b.fr</span>
+            <span>🏠 Colayrac-St-Cirq, 47</span>
         </div>
     </header>
 
@@ -43,7 +43,7 @@
                             <div class="list">
                                 @foreach (Skill skill in category.Skills)
                                 {
-                                    <span>@FormatLanguage(skill.Name)</span>
+                                    <span>@FilterLanguage(skill.Name)</span>
                                 }
                             </div>
                         </article>
@@ -78,8 +78,6 @@
                                     <text> - @edu.EndDate.Value.Year</text> 
                                 }
                             </p>
-
-                            <p>@edu.Summary</p>
                         </article>
                     }
                 }
@@ -91,7 +89,8 @@
         <div id="main-info">
             <section id="presentation">
                 <p>
-                    Développeur C# et Web bilingue (français/anglais) fort d'une expérience d'auto-entrepreneur de 5 ans m'ayant forgé une solide rigeur organisationnelle, et une excellent capacité d'apprentissage en front et back-end. 
+                    Développeur <b>C#</b> et <b>Web bilingue</b> avec une maitrise full-stack (C#, PHP, JS). <br />
+                    <b>Autonome</b>, <b>auto-didacte</b> et <b>rigoureux</b>, qualités démontrées par la gestion d'une chaîne YouTube de plus de 80 000 abonnés.
                 </p>
             </section>
 
@@ -105,20 +104,22 @@
                         <article>
                             <h4>@job.Title</h4>
                             
-                            <p class="organization">
-                                @job.Organization
+                            <div class="exp-info">
+                                <p class="organization">
+                                    @job.Organization
 
-                                @if (!string.IsNullOrEmpty(job.Location))
-                                {
-                                    <text> - @job.Location</text>
-                                }
-                            </p>
+                                    @if (!string.IsNullOrEmpty(job.Location))
+                                    {
+                                        <text> - @job.Location</text>
+                                    }
+                                </p>
 
-                            <p class="dates">
-                                @job.StartDate.ToString("MMM yyyy") -
-                            
-                                @(job.EndDate?.ToString("MMM yyyy") ?? "Présent")
-                            </p>
+                                <p class="dates">
+                                    @job.StartDate.ToString("MMM yyyy") -
+                                
+                                    @(job.EndDate?.ToString("MMM yyyy") ?? "Présent")
+                                </p>
+                            </div>
 
                             @if (job.Responsibilities.Any())
                             {
@@ -142,7 +143,7 @@
                     @foreach (Project project in projects)
                     {
                         <article>
-                            <h4>@project.Title</h4>
+                            <h4>@FilterProjects(project.Title)</h4>
 
                             <p>@project.Description</p>
                         </article>
@@ -176,6 +177,14 @@
                 jobs = allExperiences
                     .Where(e => e.Type == ExperienceType.Job && e.IncludeInCV)
                     .OrderByDescending(e => e.StartDate)
+                    .Select(e => 
+                    {
+                        e.Responsibilities = 
+                        e.Responsibilities
+                            .Where(r => r.IncludeInCV)
+                            .ToList();
+                        return e;
+                    })
                     .ToList();
 
                 education = allExperiences
@@ -198,12 +207,23 @@
         }
     }
 
-    // Format Language strings to be CV specific
-    private string FormatLanguage(string skillName) =>
+    // Filter Language strings to be CV specific
+    private string FilterLanguage(string skillName) =>
         skillName switch
         {
             "Français" => "Français - Natif",
             "Anglais" => "Anglais - Courant",
             _ => skillName
         };
+
+    // Filter Projects to be CV specific
+    private string FilterProjects(string projectName)
+    {
+        if (projectName == "Portfolio en ligne")
+        {
+            return "Portfolio en ligne (anthony-b.fr)";
+        }
+
+        return projectName;
+    }
 }

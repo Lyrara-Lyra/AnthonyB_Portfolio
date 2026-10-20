@@ -8,6 +8,7 @@ public class Responsibility
     public int ExperienceId { get; set; }
     public required string Description { get; set; }
     public int DisplayOrder { get; set; }
+    public bool IncludeInCV { get; set; } = true;
 
     [JsonIgnore]
     public Experience Experience { get; set; } = null!;

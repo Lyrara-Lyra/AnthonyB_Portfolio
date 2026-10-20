@@ -8,11 +8,12 @@ public static class SeedData
     {
         using var context = serviceProvider.GetRequiredService<PortfolioDbContext>();
 
-        // Only seed data if there is none
-        if (context.Categories.Any())
-        {
-            return;
-        }
+        // Clear all existing data to always refresh on startup
+        context.Projects.RemoveRange(context.Projects);
+        context.Experiences.RemoveRange(context.Experiences);
+        context.Skills.RemoveRange(context.Skills);
+        context.Categories.RemoveRange(context.Categories);
+        context.SaveChanges();
 
         // =============================================
         // CATEGORIES
@@ -277,7 +278,7 @@ public static class SeedData
         var portfolioWebsite = new Project
         {
             Title = "Portfolio en ligne",
-            Description = "Développement d'un portfolio web moderne qui présente mon parcours professionnel et mes projets notables.",
+            Description = "Développement d'un portfolio web moderne présentant parcours professionnel, projets notables et maitrise des technologies web.",
             Url = "https://github.com/Lyrara-Lyra/AnthonyB_Portfolio",
             IsVisible = true,
             IncludeInCV = true,
@@ -503,9 +504,9 @@ public static class SeedData
             IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
-                new Responsibility { Description = "Gestion complète d'une auto-entreprise : plannings, négociation avec sponsors", DisplayOrder = 1 },
-                new Responsibility { Description = "Animation d'une chaîne YouTube anglophone (> 80 000 abonnés) à temps plein", DisplayOrder = 2 },
-                new Responsibility { Description = "Vulgarisation de systèmes complexes via scripts et supports visuels pour un but ludique", DisplayOrder = 3 },
+                new Responsibility { Description = "Gestion complète d'une auto-entreprise : plannings, négociation avec sponsors, administration, finances", DisplayOrder = 1 },
+                new Responsibility { Description = "Animation d'une chaîne YouTube anglophone de plus de 80 000 abonnés", DisplayOrder = 2 },
+                new Responsibility { Description = "Vulgarisation de systèmes complexes via scripts et supports visuels dans un but informatif et ludique", DisplayOrder = 3 },
                 new Responsibility { Description = "Développement et maintenance du site web bilingue lyra-made-a.website", DisplayOrder = 4 }
             },
             Skills = new List<ExperienceSkill> 
@@ -534,9 +535,9 @@ public static class SeedData
             {
                 new Responsibility { Description = "Refonte, maintenance et évolution d'applications métiers en C#", DisplayOrder = 1 },
                 new Responsibility { Description = "Développement en .NET Core, .NET Framework et WPF avec Bootstrap", DisplayOrder = 2 },
-                new Responsibility { Description = "Réalisation de scripts de migration de bases de données d'Oracle vers SQL Server", DisplayOrder = 3 },
+                new Responsibility { Description = "Réalisation de scripts de migration de bases de données d'Oracle vers SQL Server", DisplayOrder = 3, IncludeInCV = false },
                 new Responsibility { Description = "Rédaction et exécution de tests unitaires, développement de patchs correctifs", DisplayOrder = 4 },
-                new Responsibility { Description = "Rédaction de documents de suivi applicatif", DisplayOrder = 5 },
+                new Responsibility { Description = "Rédaction de documents de suivi applicatif", DisplayOrder = 5, IncludeInCV = false },
                 new Responsibility { Description = "Assistance technique directe aux utilisateurs en visio", DisplayOrder = 6 }
             },
             Skills = new List<ExperienceSkill> 
@@ -566,7 +567,7 @@ public static class SeedData
             Responsibilities = new List<Responsibility>
             {
                 new Responsibility { Description = "Support technique francophone pour les joueurs de Fortnite", DisplayOrder = 1 },
-                new Responsibility { Description = "Résolution de problèmes techniques et respect des procédures internes", DisplayOrder = 2 },
+                new Responsibility { Description = "Résolution de problèmes techniques et respect des procédures internes", DisplayOrder = 2, IncludeInCV = false },
                 new Responsibility { Description = "Rédaction de documentation interne avec supports visuels", DisplayOrder = 3 },
                 new Responsibility { Description = "Communication interne et lecture de documentation technique en anglais", DisplayOrder = 4 }
             },
@@ -758,7 +759,7 @@ public static class SeedData
         var btsIg = new Experience
         {
             Type = ExperienceType.Education,
-            Title = "BTS Informatique de Gestion - Option Développeur d'Applications",
+            Title = "BTS Informatique de Gestion",
             Organization = "Lycée Gustave Eiffel",
             Location = "Bordeaux",
             StartDate = new DateTime(2009, 9, 1),
@@ -768,9 +769,10 @@ public static class SeedData
             IncludeInCV = true,
             Responsibilities = new List<Responsibility>
             {
-                new Responsibility { Description = "Apprentissage de l'algorithmie avancée", DisplayOrder = 1 },
-                new Responsibility { Description = "Maîtrise de la Programmation Orientée Objet", DisplayOrder = 2 },
-                new Responsibility { Description = "Modélisation de Bases de Données avec UML et SQL", DisplayOrder = 3 }
+                new Responsibility { Description = "Option Développeur d'Applications", DisplayOrder = 1},
+                new Responsibility { Description = "Apprentissage de l'algorithmie avancée", DisplayOrder = 2 },
+                new Responsibility { Description = "Maîtrise de la Programmation Orientée Objet", DisplayOrder = 3 },
+                new Responsibility { Description = "Modélisation de Bases de Données avec UML et SQL", DisplayOrder = 4 }
             },
             Skills = new List<ExperienceSkill> 
             { 

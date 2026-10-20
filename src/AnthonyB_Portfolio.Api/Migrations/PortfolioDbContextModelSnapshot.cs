@@ -221,6 +221,9 @@ namespace AnthonyB_Portfolio.Api.Migrations
                     b.Property<int>("ExperienceId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IncludeInCV")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ExperienceId");
