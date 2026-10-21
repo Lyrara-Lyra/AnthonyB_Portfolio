@@ -297,8 +297,9 @@ public static class SeedData
                 new ProjectDetail { Description = "Développement full-stack avec architecture séparée (API + Frontend)", DisplayOrder = 1 },
                 new ProjectDetail { Description = "Base de données SQLite avec Entity Framework Core", DisplayOrder = 2 },
                 new ProjectDetail { Description = "Design responsive et interface utilisateur intuitive", DisplayOrder = 3 },
-                new ProjectDetail { Description = "Utilisation des outils GitHub pour la sauvegarde", DisplayOrder = 4 },
-                new ProjectDetail { Description = "Mise en ligne via Microsoft Azure", DisplayOrder = 5 }
+                new ProjectDetail { Description = "Élaboration et affichage d'un CV en ligne avec règles d'impression spécifiques", DisplayOrder = 4 },
+                new ProjectDetail { Description = "Utilisation des outils GitHub pour la sauvegarde", DisplayOrder = 5 },
+                new ProjectDetail { Description = "Mise en ligne via Microsoft Azure", DisplayOrder = 6 }
             },
             Screenshots = new List<ProjectScreenshot>
             {
